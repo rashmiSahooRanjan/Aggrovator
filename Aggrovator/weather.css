@@ -1,0 +1,384 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+       .nav-menu{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2E7D32;
+       }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: #667eea;
+        }
+
+        .search-bar button {
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .location-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+        }
+
+        .main-weather {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .current-weather {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .temp-display {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .temp-display img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .temp-value {
+            font-size: 72px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .weather-desc {
+            font-size: 24px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .hourly-forecast {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .hourly-item {
+            min-width: 100px;
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .hourly-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hourly-time {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .hourly-item img {
+            width: 50px;
+            height: 50px;
+            margin: 10px 0;
+        }
+
+        .hourly-temp {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .daily-forecast {
+            display: grid;
+            gap: 10px;
+        }
+
+        .daily-item {
+            display: grid;
+            grid-template-columns: 150px 1fr 100px 100px;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .daily-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .daily-day {
+            font-weight: bold;
+        }
+
+        .daily-condition {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .daily-condition img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .daily-temps {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .temp-high {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        .temp-low {
+            color: #1976d2;
+        }
+
+        .air-quality {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .aqi-card {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .aqi-value {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .aqi-good { color: #4caf50; }
+        .aqi-moderate { color: #ffeb3b; }
+        .aqi-unhealthy { color: #ff9800; }
+        .aqi-poor { color: #f44336; }
+
+        .sun-times {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .sun-card {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .sun-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .sun-time {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .weather-map {
+            height: 600px;
+            width: 100%;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #map {
+            height: 600px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .map-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .map-controls button {
+            display: block;
+            width: 100%;
+            padding: 8px 15px;
+            margin: 5px 0;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .map-controls button:hover {
+            background: #5568d3;
+        }
+
+        .map-controls button.active {
+            background: #4c51bf;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .current-weather {
+                grid-template-columns: 1fr;
+            }
+
+            .daily-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .temp-value {
+                font-size: 48px;
+            }
+
+            .weather-map {
+                height: 400px;
+            }
+
+            #map {
+                height: 400px;
+            }
+
+            .map-controls {
+                top: 5px;
+                right: 5px;
+                padding: 5px;
+            }
+
+            .map-controls button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+        }

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Aggrovator</title>
+    <link rel="stylesheet" href="../css/community.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: popIn 0.4s ease;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .popup h2 {
+            margin-bottom: 15px;
+        }
+
+        .popup button {
+            background: white;
+            color: #2575fc;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .popup button:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-seedling"></i>
+                <span>Aggrovator</span>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="weather.html" class="nav-link">Weather</a>
+                <a href="market.html" class="nav-link">Market Prices</a>
+                <a href="disease.html" class="nav-link">Disease Detection</a>
+                <a href="education.html" class="nav-link">Education</a>
+                <a href="community.html" class="nav-link active">Community</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Community Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1><i class="fas fa-users"></i> Farmer Community</h1>
+                <p>Connect, share, and learn from fellow farmers across India</p>
+            </div>
+
+            <!-- Community Stats -->
+            <div class="community-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number">25,000+</div>
+                        <div class="stat-label">Active Farmers</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number">50,000+</div>
+                        <div class="stat-label">Discussions</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Solutions Shared</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Cities</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="community-layout">
+                <!-- Sidebar -->
+                <div class="community-sidebar">
+                    <!-- Create Post -->
+                    <div class="create-post-card">
+                        <h3><i class="fas fa-plus-circle"></i> Share Your Experience</h3>
+                        <button class="btn btn-primary" onclick="openCreatePostModal()">
+                            <i class="fas fa-pen"></i> Create Post
+                        </button>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="categories-card">
+                        <h3><i class="fas fa-tags"></i> Categories</h3>
+                        <div class="category-list">
+                            <div class="category-item active" onclick="filterPosts('all')">
+                                <i class="fas fa-globe"></i>
+                                <span>All Posts</span>
+                                <span class="count">1,234</span>
+                            </div>
+                            <div class="category-item" onclick="filterPosts('crop-care')">
+                                <i class="fas fa-seedling"></i>
+                                <span>Crop Care</span>
+                                <span class="count">456</span>
+                            </div>
+                            <div class="category-item" onclick="filterPosts('pest-control')">
+                                <i class="fas fa-bug"></i>
+                                <span>Pest Control</span>
+                                <span class="count">234</span>
+                            </div>
+                            <div class="category-item" onclick="filterPosts('irrigation')">
+                                <i class="fas fa-tint"></i>
+                                <span>Irrigation</span>
+                                <span class="count">189</span>
+                            </div>
+                            <div class="category-item" onclick="filterPosts('market-tips')">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Market Tips</span>
+                                <span class="count">167</span>
+                            </div>
+                            <div class="category-item" onclick="filterPosts('technology')">
+                                <i class="fas fa-laptop"></i>
+                                <span>Technology</span>
+                                <span class="count">123</span>
+                            </div>
+                            <div class="category-item" onclick="filterPosts('success-stories')">
+                                <i class="fas fa-trophy"></i>
+                                <span>Success Stories</span>
+                                <span class="count">98</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Contributors -->
+                    <div class="top-contributors-card">
+                        <h3><i class="fas fa-star"></i> Top Contributors</h3>
+                        <div class="contributor-list">
+                            <div class="contributor-item">
+                                <div class="contributor-avatar">
+                                    <img src="../assets/images/farmer-1.jpg" alt="Ramesh Kumar">
+                                    <div class="contributor-badge">
+                                        <i class="fas fa-crown"></i>
+                                    </div>
+                                </div>
+                                <div class="contributor-info">
+                                    <h4>Ramesh Kumar</h4>
+                                    <p>Punjab • 234 posts</p>
+                                    <div class="contributor-stats">
+                                        <span><i class="fas fa-thumbs-up"></i> 1.2k</span>
+                                        <span><i class="fas fa-comments"></i> 456</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contributor-item">
+                                <div class="contributor-avatar">
+                                    <img src="../assets/images/farmer-2.jpg" alt="Sunita Devi">
+                                    <div class="contributor-badge silver">
+                                        <i class="fas fa-medal"></i>
+                                    </div>
+                                </div>
+                                <div class="contributor-info">
+                                    <h4>Sunita Devi</h4>
+                                    <p>Maharashtra • 189 posts</p>
+                                    <div class="contributor-stats">
+                                        <span><i class="fas fa-thumbs-up"></i> 987</span>
+                                        <span><i class="fas fa-comments"></i> 321</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contributor-item">
+                                <div class="contributor-avatar">
+                                    <img src="../assets/images/farmer-3.jpg" alt="Arjun Patel">
+                                    <div class="contributor-badge bronze">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                </div>
+                                <div class="contributor-info">
+                                    <h4>Arjun Patel</h4>
+                                    <p>Gujarat • 156 posts</p>
+                                    <div class="contributor-stats">
+                                        <span><i class="fas fa-thumbs-up"></i> 765</span>
+                                        <span><i class="fas fa-comments"></i> 234</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Events -->
+                    <div class="events-card">
+                        <h3><i class="fas fa-calendar"></i> Upcoming Events</h3>
+                        <div class="event-list">
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <div class="day">28</div>
+                                    <div class="month">Sep</div>
+                                </div>
+                                <div class="event-info">
+                                    <h4>Organic Farming Workshop</h4>
+                                    <p><i class="fas fa-map-marker-alt"></i> Delhi</p>
+                                    <p><i class="fas fa-users"></i> 234 interested</p>
+                                </div>
+                            </div>
+
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <div class="day">02</div>
+                                    <div class="month">Oct</div>
+                                </div>
+                                <div class="event-info">
+                                    <h4>Smart Irrigation Seminar</h4>
+                                    <p><i class="fas fa-map-marker-alt"></i> Mumbai</p>
+                                    <p><i class="fas fa-users"></i> 156 interested</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="community-main">
+                    <!-- Search and Filters -->
+                    <div class="community-header">
+                        <div class="search-section">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="post-search" placeholder="Search discussions..."
+                                    onkeyup="searchPosts()">
+                            </div>
+                            <div class="filter-options">
+                                <select id="sort-filter" onchange="sortPosts()">
+                                    <option value="recent">Most Recent</option>
+                                    <option value="popular">Most Popular</option>
+                                    <option value="answered">Most Answered</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Posts Feed -->
+                    <div class="posts-feed" id="posts-feed">
+                        <!-- Featured Post -->
+                        <div class="post-card featured" data-category="success-stories">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <img src="../assets/images/farmer-success.jpg" alt="Vikram Singh">
+                                    <div class="author-info">
+                                        <h4>Vikram Singh</h4>
+                                        <p>Haryana • 2 hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="post-badge featured-badge">
+                                    <i class="fas fa-star"></i> Featured
+                                </div>
+                            </div>
+
+                            <div class="post-content">
+                                <h3>How I Increased My Wheat Yield by 40% Using Smart Farming</h3>
+                                <p>Last season, I implemented precision agriculture techniques and IoT sensors in my
+                                    10-acre wheat farm. The results were amazing! Here's what I learned...</p>
+
+                                <div class="post-images">
+                                    <img src="../assets/images/wheat-field-before.jpg" alt="Before"
+                                        onclick="openImageModal(this.src)">
+                                    <img src="../assets/images/wheat-field-after.jpg" alt="After"
+                                        onclick="openImageModal(this.src)">
+                                </div>
+
+                                <div class="post-tags">
+                                    <span class="tag">Smart Farming</span>
+                                    <span class="tag">Wheat</span>
+                                    <span class="tag">Success Story</span>
+                                </div>
+                            </div>
+
+                            <div class="post-actions">
+                                <button class="action-btn like-btn" onclick="toggleLike(this)">
+                                    <i class="fas fa-thumbs-up"></i> 234
+                                </button>
+                                <button class="action-btn comment-btn" onclick="toggleComments(this)">
+                                    <i class="fas fa-comment"></i> 45
+                                </button>
+                                <button class="action-btn share-btn" onclick="sharePost(this)">
+                                    <i class="fas fa-share"></i> Share
+                                </button>
+                                <button class="action-btn bookmark-btn" onclick="bookmarkPost(this)">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+
+                            <div class="post-comments" style="display: none;">
+                                <div class="comment-input">
+                                    <img src="../assets/images/user-avatar.jpg" alt="You">
+                                    <input type="text" placeholder="Write a comment...">
+                                    <button class="btn btn-sm btn-primary">Post</button>
+                                </div>
+
+                                <div class="comments-list">
+                                    <div class="comment">
+                                        <img src="../assets/images/farmer-4.jpg" alt="Rajesh">
+                                        <div class="comment-content">
+                                            <h5>Rajesh Kumar</h5>
+                                            <p>This is very inspiring! Can you share more details about the IoT sensors
+                                                you used?</p>
+                                            <div class="comment-actions">
+                                                <button class="comment-like">Like</button>
+                                                <button class="comment-reply">Reply</button>
+                                                <span class="comment-time">1 hour ago</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Regular Posts -->
+                        <div class="post-card" data-category="pest-control">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <img src="../assets/images/farmer-5.jpg" alt="Meera Devi">
+                                    <div class="author-info">
+                                        <h4>Meera Devi</h4>
+                                        <p>Tamil Nadu • 4 hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="post-category">
+                                    <i class="fas fa-bug"></i> Pest Control
+                                </div>
+                            </div>
+
+                            <div class="post-content">
+                                <h3>Need Help: White Flies on My Tomato Plants</h3>
+                                <p>I'm seeing a lot of white flies on my tomato plants. They seem to be spreading
+                                    quickly. Has anyone dealt with this before? What organic solutions worked for you?
+                                </p>
+
+                                <div class="post-images">
+                                    <img src="../assets/images/tomato-whitefly.jpg" alt="White flies on tomato"
+                                        onclick="openImageModal(this.src)">
+                                </div>
+
+                                <div class="post-tags">
+                                    <span class="tag">Tomato</span>
+                                    <span class="tag">White Flies</span>
+                                    <span class="tag">Help Needed</span>
+                                </div>
+                            </div>
+
+                            <div class="post-actions">
+                                <button class="action-btn like-btn" onclick="toggleLike(this)">
+                                    <i class="fas fa-thumbs-up"></i> 12
+                                </button>
+                                <button class="action-btn comment-btn" onclick="toggleComments(this)">
+                                    <i class="fas fa-comment"></i> 8
+                                </button>
+                                <button class="action-btn share-btn" onclick="sharePost(this)">
+                                    <i class="fas fa-share"></i> Share
+                                </button>
+                                <button class="action-btn bookmark-btn" onclick="bookmarkPost(this)">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="post-card" data-category="irrigation">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <img src="../assets/images/farmer-6.jpg" alt="Suresh Reddy">
+                                    <div class="author-info">
+                                        <h4>Suresh Reddy</h4>
+                                        <p>Andhra Pradesh • 6 hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="post-category">
+                                    <i class="fas fa-tint"></i> Irrigation
+                                </div>
+                            </div>
+
+                            <div class="post-content">
+                                <h3>DIY Drip Irrigation System for Small Farms</h3>
+                                <p>I built a cost-effective drip irrigation system for my 2-acre farm using PVC pipes
+                                    and basic fittings. Total cost was only ₹15,000. Here's how I did it...</p>
+
+                                <div class="post-video">
+                                    <video controls poster="../assets/images/drip-irrigation-thumb.jpg">
+                                        <source src="../assets/videos/diy-drip-irrigation.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+
+                                <div class="post-tags">
+                                    <span class="tag">DIY</span>
+                                    <span class="tag">Drip Irrigation</span>
+                                    <span class="tag">Cost Effective</span>
+                                </div>
+                            </div>
+
+                            <div class="post-actions">
+                                <button class="action-btn like-btn" onclick="toggleLike(this)">
+                                    <i class="fas fa-thumbs-up"></i> 89
+                                </button>
+                                <button class="action-btn comment-btn" onclick="toggleComments(this)">
+                                    <i class="fas fa-comment"></i> 23
+                                </button>
+                                <button class="action-btn share-btn" onclick="sharePost(this)">
+                                    <i class="fas fa-share"></i> Share
+                                </button>
+                                <button class="action-btn bookmark-btn" onclick="bookmarkPost(this)">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Load More Button -->
+                        <div class="load-more-section">
+                            <button class="btn btn-secondary load-more-btn" onclick="loadMorePosts()">
+                                <i class="fas fa-plus"></i> Load More Posts
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Post Modal -->
+    <div id="create-post-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-pen"></i> Create New Post</h2>
+                <button class="modal-close" onclick="closeCreatePostModal()">&times;</button>
+            </div>
+
+            <form id="create-post-form" class="create-post-form">
+                <div class="form-group">
+                    <label for="post-category">Category</label>
+                    <select id="post-category" required>
+                        <option value="">Select Category</option>
+                        <option value="crop-care">Crop Care</option>
+                        <option value="pest-control">Pest Control</option>
+                        <option value="irrigation">Irrigation</option>
+                        <option value="market-tips">Market Tips</option>
+                        <option value="technology">Technology</option>
+                        <option value="success-stories">Success Stories</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="post-title">Title</label>
+                    <input type="text" id="post-title" placeholder="What's your post about?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="post-content">Content</label>
+                    <textarea id="post-content" rows="6"
+                        placeholder="Share your experience, ask a question, or provide helpful tips..."
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="post-tags">Tags</label>
+                    <input type="text" id="post-tags"
+                        placeholder="Add tags separated by commas (e.g., wheat, organic, fertilizer)">
+                </div>
+
+                <div class="form-group">
+                    <label for="post-media">Add Photos/Videos</label>
+                    <div class="media-upload-area">
+                        <input type="file" id="post-media" multiple accept="image/*,video/*">
+                        <div class="upload-placeholder">
+                            <i class="fas fa-camera"></i>
+                            <p>Click to add photos or videos</p>
+                        </div>
+                    </div>
+                    <div id="media-preview" class="media-preview"></div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeCreatePostModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" onclick="showPopup()">
+                        <i class="fas fa-paper-plane"></i> Post
+                    </button>
+                </div>
+                
+                <div class="popup-overlay" id="successPopup">
+                    <div class="popup">
+                        <h2>✅ Post Created Successfully!</h2>
+                        <p>Your post has been published.</p>
+                        <button onclick="redirectHome()">OK</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+            <img id="modal-image" src="" alt="">
+        </div>
+    </div>
+
+    <script src="../js/community.js"></script>
+    <script>
+        function showPopup() {
+            // Show the popup
+            document.getElementById('successPopup').style.display = 'flex';
+        }
+        function redirectHome() {
+            // Redirect to homepage
+            window.location.href = '/pages/community.html'; // change this to your homepage route if different
+        }
+    </script>
+</body>
+
+</html>

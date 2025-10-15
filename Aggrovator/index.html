@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggrovator - Smart Farming Solutions</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Chart.js for Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- SpeechSynthesis API for Voice -->
+    <script src="https://cdn.jsdelivr.net/npm/web-speech-api@1.0.0/dist/web-speech-api.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-seedling"></i>
+                <span>Aggrovator</span>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="pages/weather.html" class="nav-link">Weather</a>
+                <a href="pages/market.html" class="nav-link">Market Prices</a>
+                <a href="pages/disease.html" class="nav-link">Disease Detection</a>
+                <a href="pages/education.html" class="nav-link">Education</a>
+                <a href="pages/community.html" class="nav-link">Community</a>
+                <a href="pages/contact.html" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Welcome to Aggrovator</h1>
+                <p>Your Smart Farming Companion - Solving Agricultural Challenges with Modern Technology</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="openChatbot()">
+                        <i class="fas fa-robot"></i> Ask AI Assistant
+                    </button>
+                    <button class="btn btn-secondary" onclick="location.href='pages/weather.html'">
+                        <i class="fas fa-cloud-sun"></i> Check Weather
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-tractor hero-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Our Solutions</h2>
+            <div class="features-grid">
+                <div class="feature-card" onclick="location.href='pages/weather.html'">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3>Weather Forecasting</h3>
+                    <p>Real-time weather data and predictions to help you plan your farming activities</p>
+                </div>
+                
+                <div class="feature-card" onclick="location.href='pages/market.html'">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Market Prices</h3>
+                    <p>Live commodity pricing and market trends to maximize your profits</p>
+                </div>
+                
+                <div class="feature-card" onclick="location.href='pages/disease.html'">
+                    <div class="feature-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Disease Detection</h3>
+                    <p>AI-powered crop disease identification and treatment recommendations</p>
+                </div>
+                
+                <div class="feature-card" onclick="location.href='pages/education.html'">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education Hub</h3>
+                    <p>Learn modern farming techniques and access educational resources</p>
+                </div>
+                
+                <div class="feature-card" onclick="location.href='pages/community.html'">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>Connect with fellow farmers and share experiences</p>
+                </div>
+                
+                <div class="feature-card" onclick="location.href='pages/contact.html'">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Get help and support whenever you need it</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Farmers Helped</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Crop Types Supported</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>Farming Assistant</span>
+            </div>
+            <button class="chatbot-close" onclick="closeChatbot()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="chatbot-quick-questions">
+            <div class="quick-question" onclick="askQuestion('Weather forecast for today')">Weather forecast</div>
+            <div class="quick-question" onclick="askQuestion('Current market prices')">Market prices</div>
+            <div class="quick-question" onclick="askQuestion('How to treat leaf blight?')">Disease treatment</div>
+        </div>
+        
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    <i class="fas fa-robot"></i>
+                    <div class="message-text">
+                        Hello! I'm your farming assistant. How can I help you today?
+                    </div>
+                </div>
+                <div class="message-time">Just now</div>
+            </div>
+        </div>
+        
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input-field" placeholder="Type your message...">
+            <button id="voice-btn" class="voice-btn" onclick="toggleVoice()">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <button onclick="sendMessage()" class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chatbot FAB -->
+    <button class="chatbot-fab" onclick="openChatbot()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aggrovator</h3>
+                    <p>Empowering farmers with smart technology solutions for better agriculture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="pages/weather.html">Weather</a></li>
+                        <li><a href="pages/market.html">Market Prices</a></li>
+                        <li><a href="pages/disease.html">Disease Detection</a></li>
+                        <li><a href="pages/education.html">Education</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> +91 9348698773</p>
+                    <p><i class="fas fa-envelope"></i> support@aggrovator.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025@ Aggrovator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

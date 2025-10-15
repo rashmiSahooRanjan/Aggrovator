@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Portal - News, Schemes, Weather & Market</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffd700;
+      font-size: 2em;
+    }
+    .section {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 1.5em;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+    .cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .card {
+      width: 300px;
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 15px;
+    }
+    .card-title {
+      font-size: 1.2em;
+      margin: 0 0 10px;
+      color: #ffd700;
+    }
+    .card-text {
+      font-size: 0.9em;
+      margin: 0 0 10px;
+    }
+    .badge {
+      background-color: #28a745;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #333;
+    }
+    #market-tool {
+      margin-top: 20px;
+      padding: 15px;
+      background: #222;
+      border-radius: 10px;
+    }
+    input {
+      margin: 5px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header"> Free Resources for Farmers</div>
+
+  <div class="section">
+    <div class="section-title">Latest Farmer News</div>
+    <div class="cards">
+      <div class="card">
+        <img src="../assets/images/3.jpg" alt="Crop Harvest">
+        <div class="card-content">
+          <div class="card-title">Bumper Wheat Harvest in Punjab</div>
+          <div class="card-text">Farmers in Punjab report a 20% increase in wheat yield this season due to favorable weather. [News @FarmUpdate]</div>
+          <div class="badge">Free Access</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="../assets/images/3.webp" alt="Paddy Fields">
+        <div class="card-content">
+          <div class="card-title">Paddy Procurement Begins Early</div>
+          <div class="card-text">Government starts paddy procurement at MSP of ₹2320/quintal to support rice farmers. [News @AgriNews]</div>
+          <div class="badge">Free Access</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="../assets/images/4.webp" alt="Tomato Market">
+        <div class="card-content">
+          <div class="card-title">Tomato Prices Surge 30%</div>
+          <div class="card-text">Due to supply shortages, tomato prices reach ₹50/kg in major markets, benefiting vegetable growers. [Update @CropPrices]</div>
+          <div class="badge">Free Access</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="../assets/images/4.jpg" alt="Cotton Fields">
+        <div class="card-content">
+          <div class="card-title">Cotton Yield Expected to Rise</div>
+          <div class="card-text">Cotton farmers anticipate higher yields with new hybrid varieties introduced this year. [News @CottonBoard]</div>
+          <div class="badge">Free Access</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="../assets/images/1.avif" alt="Onion Prices">
+        <div class="card-content">
+          <div class="card-title">Onion MSP Hiked to ₹45/kg</div>
+          <div class="card-text">Government announces minimum support price for onions at ₹45 per kg to stabilize farmer incomes. [Update @MSPAlert]</div>
+          <div class="badge">Free Access</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Weather Forecast News for Indian States (October 15-21, 2025)</div>
+    <table>
+      <tr>
+        <th>State/UT</th>
+        <th>Temperature Range (°C)</th>
+        <th>Precipitation</th>
+        <th>Conditions & Alerts</th>
+      </tr>
+      <tr>
+        <td>Andhra Pradesh</td>
+        <td>25-32</td>
+        <td>Light rain (20-40mm)</td>
+        <td>Partly cloudy with showers; No alerts</td>
+      </tr>
+      <tr>
+        <td>Arunachal Pradesh</td>
+        <td>15-25</td>
+        <td>Moderate rain (50-80mm)</td>
+        <td>Rainy; Possible landslides</td>
+      </tr>
+      <tr>
+        <td>Assam</td>
+        <td>22-30</td>
+        <td>Heavy rain (80-100mm)</td>
+        <td>Cloudy with thunderstorms; Flood alert</td>
+      </tr>
+      <tr>
+        <td>Bihar</td>
+        <td>24-33</td>
+        <td>Scattered showers (10-30mm)</td>
+        <td>Sunny intervals; No alerts</td>
+      </tr>
+      <tr>
+        <td>Chhattisgarh</td>
+        <td>25-34</td>
+        <td>Light rain (20-40mm)</td>
+        <td>Partly cloudy; No alerts</td>
+      </tr>
+      <tr>
+        <td>Goa</td>
+        <td>24-31</td>
+        <td>Moderate rain (40-60mm)</td>
+        <td>Showers; Coastal wind alert</td>
+      </tr>
+      <tr>
+        <td>Gujarat</td>
+        <td>26-35</td>
+        <td>Dry</td>
+        <td>Sunny; Heat advisory</td>
+      </tr>
+      <tr>
+        <td>Haryana</td>
+        <td>22-32</td>
+        <td>Dry</td>
+        <td>Clear skies; No alerts</td>
+      </tr>
+      <tr>
+        <td>Himachal Pradesh</td>
+        <td>10-22</td>
+        <td>Light snow/rain (10-30mm)</td>
+        <td>Cloudy; Avalanche risk in higher areas</td>
+      </tr>
+      <tr>
+        <td>Jharkhand</td>
+        <td>23-32</td>
+        <td>Scattered showers (20-40mm)</td>
+        <td>Partly cloudy; No alerts</td>
+      </tr>
+      <tr>
+        <td>Karnataka</td>
+        <td>23-31</td>
+        <td>Moderate rain (30-50mm)</td>
+        <td>Showers; No alerts</td>
+      </tr>
+      <tr>
+        <td>Kerala</td>
+        <td>24-30</td>
+        <td>Heavy rain (60-90mm)</td>
+        <td>Rainy; Flood warning</td>
+      </tr>
+      <tr>
+        <td>Madhya Pradesh</td>
+        <td>24-34</td>
+        <td>Dry to light rain (0-20mm)</td>
+        <td>Sunny; No alerts</td>
+      </tr>
+      <tr>
+        <td>Maharashtra</td>
+        <td>25-33</td>
+        <td>Light rain (20-40mm)</td>
+        <td>Partly cloudy; No alerts</td>
+      </tr>
+      <tr>
+        <td>Manipur</td>
+        <td>20-28</td>
+        <td>Moderate rain (40-60mm)</td>
+        <td>Cloudy; No alerts</td>
+      </tr>
+      <tr>
+        <td>Meghalaya</td>
+        <td>18-26</td>
+        <td>Heavy rain (80-120mm)</td>
+        <td>Rainy; Landslide alert</td>
+      </tr>
+      <tr>
+        <td>Mizoram</td>
+        <td>20-28</td>
+        <td>Moderate rain (50-70mm)</td>
+        <td>Showers; No alerts</td>
+      </tr>
+      <tr>
+        <td>Nagaland</td>
+        <td>18-27</td>
+        <td>Light to moderate rain (30-50mm)</td>
+        <td>Cloudy; No alerts</td>
+      </tr>
+      <tr>
+        <td>Odisha</td>
+        <td>25-32</td>
+        <td>Scattered showers (20-40mm)</td>
+        <td>Partly cloudy; Cyclone watch</td>
+      </tr>
+      <tr>
+        <td>Punjab</td>
+        <td>22-32</td>
+        <td>Dry</td>
+        <td>Sunny; No alerts</td>
+      </tr>
+      <tr>
+        <td>Rajasthan</td>
+        <td>25-36</td>
+        <td>Dry</td>
+        <td>Clear; Heat advisory</td>
+      </tr>
+      <tr>
+        <td>Sikkim</td>
+        <td>10-20</td>
+        <td>Light rain/snow (20-40mm)</td>
+        <td>Cloudy; Cold wave</td>
+      </tr>
+      <tr>
+        <td>Tamil Nadu</td>
+        <td>25-32</td>
+        <td>Moderate rain (40-60mm)</td>
+        <td>Showers; No alerts</td>
+      </tr>
+      <tr>
+        <td>Telangana</td>
+        <td>25-33</td>
+        <td>Light rain (10-30mm)</td>
+        <td>Partly cloudy; No alerts</td>
+      </tr>
+      <tr>
+        <td>Tripura</td>
+        <td>23-31</td>
+        <td>Heavy rain (60-80mm)</td>
+        <td>Rainy; No alerts</td>
+      </tr>
+      <tr>
+        <td>Uttar Pradesh</td>
+        <td>23-33</td>
+        <td>Dry to light rain (0-20mm)</td>
+        <td>Sunny; No alerts</td>
+      </tr>
+      <tr>
+        <td>Uttarakhand</td>
+        <td>15-25</td>
+        <td>Light rain (10-30mm)</td>
+        <td>Cloudy; No alerts</td>
+      </tr>
+      <tr>
+        <td>West Bengal</td>
+        <td>24-32</td>
+        <td>Scattered showers (30-50mm)</td>
+        <td>Partly cloudy; No alerts</td>
+      </tr>
+      <tr>
+        <td>Andaman & Nicobar</td>
+        <td>25-30</td>
+        <td>Heavy rain (80-100mm)</td>
+        <td>Rainy; Cyclone alert</td>
+      </tr>
+      <tr>
+        <td>Chandigarh</td>
+        <td>20-30</td>
+        <td>Dry</td>
+        <td>Sunny; No alerts</td>
+      </tr>
+      <tr>
+        <td>Dadra & Nagar Haveli and Daman & Diu</td>
+        <td>25-33</td>
+        <td>Light rain (20-40mm)</td>
+        <td>Partly cloudy; No alerts</td>
+      </tr>
+      <tr>
+        <td>Lakshadweep</td>
+        <td>26-31</td>
+        <td>Moderate rain (40-60mm)</td>
+        <td>Showers; No alerts</td>
+      </tr>
+      <tr>
+        <td>Delhi</td>
+        <td>22-32</td>
+        <td>Dry</td>
+        <td>Clear; Air quality alert</td>
+      </tr>
+      <tr>
+        <td>Puducherry</td>
+        <td>25-32</td>
+        <td>Moderate rain (40-60mm)</td>
+        <td>Showers; No alerts</td>
+      </tr>
+      <tr>
+        <td>Jammu & Kashmir</td>
+        <td>10-22</td>
+        <td>Light snow/rain (10-30mm)</td>
+        <td>Cloudy; Cold wave</td>
+      </tr>
+      <tr>
+        <td>Ladakh</td>
+        <td>0-15</td>
+        <td>Dry to light snow</td>
+        <td>Cold and sunny; Frost alert</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Government Schemes for Farmers</div>
+    <div class="cards">
+      <div class="card">
+        <img src="../assets/images/5.webp" alt="PM Kisan">
+        <div class="card-content">
+          <div class="card-title">PM Kisan Samman Nidhi</div>
+          <div class="card-text">Get ₹6000 annual income support directly into your bank account. [Scheme @PMKisan]</div>
+          <div class="badge">Free Enrollment</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="../assets/images/6.jpg" alt="Crop Insurance">
+        <div class="card-content">
+          <div class="card-title">Pradhan Mantri Fasal Bima Yojana</div>
+          <div class="card-text">Affordable crop insurance against natural calamities and pests. [Scheme @CropInsure]</div>
+          <div class="badge">Free Access</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Market Analysis & Crop Price Updates (As of October 13, 2025)</div>
+    <table>
+      <tr>
+        <th>Crop</th>
+        <th>Average Price (₹/Quintal)</th>
+        <th>Market Trend</th>
+      </tr>
+      <tr>
+        <td>Wheat</td>
+        <td>2500-2800</td>
+        <td>Stable; Demand high due to exports</td>
+      </tr>
+      <tr>
+        <td>Rice/Paddy</td>
+        <td>2300-3200</td>
+        <td>Rising; Good harvest expected</td>
+      </tr>
+      <tr>
+        <td>Cotton</td>
+        <td>6000-7000</td>
+        <td>Increasing; Strong textile demand</td>
+      </tr>
+      <tr>
+        <td>Onion</td>
+        <td>3000-4500</td>
+        <td>Volatile; Recent hikes due to shortages</td>
+      </tr>
+      <tr>
+        <td>Tomato</td>
+        <td>2000-5000</td>
+        <td>Surging; Supply issues in major markets</td>
+      </tr>
+      <tr>
+        <td>Soybean</td>
+        <td>4000-5000</td>
+        <td>Steady; Oilseed demand consistent</td>
+      </tr>
+      <tr>
+        <td>Corn/Maize</td>
+        <td>2000-2500</td>
+        <td>Moderate rise; Feed industry growth</td>
+      </tr>
+    </table>
+    <div id="market-tool">
+      <h3>Simple Profit Calculator (Free Tool)</h3>
+      <label for="crop">Crop:</label>
+      <select id="crop">
+        <option value="2500">Wheat (₹2500/quintal)</option>
+        <option value="2300">Paddy (₹2300/quintal)</option>
+        <option value="6000">Cotton (₹6000/quintal)</option>
+        <option value="3000">Onion (₹3000/quintal)</option>
+        <option value="2000">Tomato (₹2000/quintal)</option>
+      </select><br>
+      <label for="quantity">Quantity (Quintals):</label>
+      <input type="number" id="quantity" value="1"><br>
+      <label for="cost">Production Cost (₹):</label>
+      <input type="number" id="cost" value="0"><br>
+      <button onclick="calculateProfit()">Calculate Profit</button>
+      <p id="result"></p>
+    </div>
+  </div>
+
+  <script>
+    // Hover effect for badges
+    const badges = document.querySelectorAll('.badge');
+    badges.forEach(badge => {
+      badge.addEventListener('mouseover', () => {
+        badge.style.backgroundColor = '#218838';
+      });
+      badge.addEventListener('mouseout', () => {
+        badge.style.backgroundColor = '#28a745';
+      });
+    });
+
+    // Profit calculator
+    function calculateProfit() {
+      const price = document.getElementById('crop').value;
+      const quantity = document.getElementById('quantity').value;
+      const cost = document.getElementById('cost').value;
+      const revenue = price * quantity;
+      const profit = revenue - cost;
+      document.getElementById('result').innerText = `Revenue: ₹${revenue} | Profit: ₹${profit}`;
+    }
+
+    // Simulate update highlight
+    setInterval(() => {
+      const titles = document.querySelectorAll('.card-title, th');
+      titles.forEach(title => {
+        title.style.color = '#ff4500';
+        setTimeout(() => {
+          title.style.color = '#ffd700';
+        }, 2000);
+      });
+    }, 60000);
+  </script>
+</body>
+</html>

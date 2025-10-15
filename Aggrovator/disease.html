@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Disease Detection - Aggrovator</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/disease.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-seedling"></i>
+                <span><b>Aggrovator</b></span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="weather.html" class="nav-link">Weather</a>
+                <a href="disease.html" class="nav-link active">Disease Detection</a>
+                <a href="market.html" class="nav-link">Market Prices</a>
+                 <a href="education.html" class="nav-link">Education</a>
+                <a href="community.html" class="nav-link">Community</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="detection-hero">
+            <div class="container">
+                <h1><i class="fas fa-microscope"></i> AI-Powered Crop Disease Detection</h1>
+                <p>Upload a photo of your crop and get instant disease diagnosis with treatment recommendations</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="number">95%</span>
+                        <span class="label">Accuracy Rate</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="number">50+</span>
+                        <span class="label">Diseases Detected</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="number">24/7</span>
+                        <span class="label">Available</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="container">
+                <h2><i class="fas fa-upload"></i> Upload Crop Image</h2>
+                <div class="upload-methods">
+                    <div class="upload-method file-method" onclick="document.getElementById('image-upload').click()">
+                        <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                        <div class="upload-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h3>Upload from Gallery</h3>
+                        <p>Select an image from your device gallery</p>
+                    </div>
+                    
+                    <div class="upload-method camera-method" onclick="document.getElementById('camera-capture').click()">
+                        <input type="file" id="camera-capture" accept="image/*" capture="environment" style="display: none;">
+                        <div class="upload-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Take Photo</h3>
+                        <p>Capture image directly with camera</p>
+                    </div>
+                </div>
+
+                <!-- Sample Images for Testing -->
+                <div class="sample-images">
+                    <h3><i class="fas fa-images"></i> Try Sample Images</h3>
+                    <div class="sample-grid">
+                        <div class="sample-item" onclick="loadSampleImage('tomato-blight')">
+                            <img src="assets/images/diseases/tomato-late-blight.jpg" alt="Tomato Late Blight">
+                            <span>Tomato Late Blight</span>
+                        </div>
+                        <div class="sample-item" onclick="loadSampleImage('wheat-rust')">
+                            <img src="assets/images/diseases/wheat-rust.jpg" alt="Wheat Rust">
+                            <span>Wheat Rust</span>
+                        </div>
+                        <div class="sample-item" onclick="loadSampleImage('rice-blast')">
+                            <img src="assets/images/diseases/rice-blast.jpg" alt="Rice Blast">
+                            <span>Rice Blast</span>
+                        </div>
+                        <div class="sample-item" onclick="loadSampleImage('corn-borer')">
+                            <img src="assets/images/diseases/corn-borer.jpg" alt="Corn Borer">
+                            <span>Corn Borer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Preview Section -->
+        <section class="image-preview-section" id="image-preview-section">
+            <div class="container">
+                <div class="preview-container">
+                    <div class="preview-image">
+                        <img id="preview-image" src="" alt="Preview">
+                        <div class="image-actions">
+                            <button class="image-action-btn" onclick="retakePhoto()" title="Retake Photo">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                            <button class="image-action-btn" onclick="removeImage()" title="Remove Image">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-info">
+                        <h3><i class="fas fa-info-circle"></i> Image Details</h3>
+                        <div class="image-details" id="image-details">
+                            <!-- Image details will be populated here -->
+                        </div>
+                        
+                        <button class="analyze-btn" id="analyze-btn" disabled onclick="analyzeImage()">
+                            <i class="fas fa-search"></i> Analyze Image
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analysis Results -->
+        <section class="analysis-results" id="analysis-results">
+            <div class="container">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h2><i class="fas fa-chart-line"></i> Analysis Results</h2>
+                        <div class="analysis-status" id="analysis-status">
+                            <!-- Status will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Disease Detection Results -->
+                    <div class="disease-detection">
+                        <h3><i class="fas fa-bug"></i> Disease Detection</h3>
+                        <div class="detection-results" id="detection-results">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Treatment Recommendations -->
+                    <div class="treatment-section">
+                        <h3><i class="fas fa-prescription-bottle-alt"></i> Treatment Recommendations</h3>
+                        <div class="treatment-tabs">
+                            <button class="treatment-tab active" data-tab="immediate">Immediate Action</button>
+                            <button class="treatment-tab" data-tab="organic">Organic Treatment</button>
+                            <button class="treatment-tab" data-tab="preventive">Prevention</button>
+                        </div>
+                        
+                        <div class="treatment-content active" id="immediate-treatment">
+                            <!-- Immediate treatment content -->
+                        </div>
+                        <div class="treatment-content" id="organic-treatment">
+                            <!-- Organic treatment content -->
+                        </div>
+                        <div class="treatment-content" id="preventive-treatment">
+                            <!-- Preventive treatment content -->
+                        </div>
+                    </div>
+
+                    <!-- Prevention Tips -->
+                    <div class="prevention-section">
+                        <h3><i class="fas fa-shield-alt"></i> Prevention Tips</h3>
+                        <div class="prevention-tips" id="prevention-tips">
+                            <!-- Prevention tips will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-btn primary" data-action="save-report">
+                            <i class="fas fa-download"></i> Save Report
+                        </button>
+                        <button class="action-btn secondary" data-action="share-results">
+                            <i class="fas fa-share"></i> Share Results
+                        </button>
+                        <button class="action-btn secondary" data-action="consult-expert">
+                            <i class="fas fa-user-md"></i> Consult Expert
+                        </button>
+                        <button class="action-btn secondary" data-action="new-analysis">
+                            <i class="fas fa-plus"></i> New Analysis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analysis History -->
+        <section class="history-section">
+            <div class="container">
+                <h2><i class="fas fa-history"></i> Analysis History</h2>
+                <div class="history-grid" id="history-grid">
+                    <!-- History items will be populated here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aggrovator</h3>
+                    <p>Empowering farmers with AI-powered solutions for better crop management and disease detection.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="weather.html">Weather</a></li>
+                        <li><a href="market.html">Market</a></li>
+                        <li><a href="disease.html">Disease Detection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="education.html">Help Center</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Aggrovator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/disease.js"></script>
+</body>
+</html>

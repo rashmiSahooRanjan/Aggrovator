@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Educational Hub</title>
+  <link rel="stylesheet" href="../css/Market.css" />
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a>Aggrovator</a>
+        <a href="../index.html" onclick="showSection('home')">Home</a>
+        <a href="../pages/weather.html" onclick="showSection('courses')">Weather</a>
+        <a href="#" onclick="showSection('resources')">Market</a>
+        <a href="../pages/contact.html" onclick="showSection('contact')">Contact</a>
+    </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 Farmer's Market Price Portal - India</title>
+    <link rel="stylesheet" href="../css/Market.css" />
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌾 Comprehensive Farmer Market Price Portal</h1>
+            <p class="subtitle">Real-time Agricultural Market Prices Across India</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="cropCount">0</span>
+                    <span>Crops</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="pesticideCount">0</span>
+                    <span>Pesticides</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="fertilizerCount">0</span>
+                    <span>Fertilizers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="seedCount">0</span>
+                    <span>Seeds</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="equipmentCount">0</span>
+                    <span>Equipment</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="search-filter">
+            <div class="filter-row">
+                <span class="filter-label">🔍 Search:</span>
+                <input type="text" id="searchInput" placeholder="Search by product name, type, variety...">
+            </div>
+            <div class="filter-row">
+                <span class="filter-label">📍 State:</span>
+                <select id="stateFilter">
+                    <option value="">All States</option>
+                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                    <option value="assam">Assam</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="chhattisgarh">Chhattisgarh</option>
+                    <option value="goa">Goa</option>
+                    <option value="gujarat">Gujarat</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="himachal-pradesh">Himachal Pradesh</option>
+                    <option value="jharkhand">Jharkhand</option>
+                    <option value="karnataka">Karnataka</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="madhya-pradesh">Madhya Pradesh</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="manipur">Manipur</option>
+                    <option value="meghalaya">Meghalaya</option>
+                    <option value="mizoram">Mizoram</option>
+                    <option value="nagaland">Nagaland</option>
+                    <option value="odisha">Odisha</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="rajasthan">Rajasthan</option>
+                    <option value="sikkim">Sikkim</option>
+                    <option value="tamil-nadu">Tamil Nadu</option>
+                    <option value="telangana">Telangana</option>
+                    <option value="tripura">Tripura</option>
+                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                    <option value="uttarakhand">Uttarakhand</option>
+                    <option value="west-bengal">West Bengal</option>
+                </select>
+                <span class="filter-label">🏷️ Category:</span>
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('crops')">🌾 Crop Prices</div>
+            <div class="tab" onclick="switchTab('pesticides')">🧪 Pesticides</div>
+            <div class="tab" onclick="switchTab('fertilizers')">🌱 Fertilizers</div>
+            <div class="tab" onclick="switchTab('seeds')">🌿 Seeds</div>
+            <div class="tab" onclick="switchTab('equipment')">🚜 Equipment</div>
+        </div>
+
+        <div class="results-info">
+            <div class="results-count" id="resultsCount">Showing 0 items</div>
+            <div class="sort-options">
+                <label for="sortSelect">Sort by:</label>
+                <select id="sortSelect">
+                    <option value="name">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="price">Price (Low to High)</option>
+                    <option value="price-desc">Price (High to Low)</option>
+                    <option value="state">State</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="crops" class="content-section active">
+            <div class="price-grid" id="cropsGrid"></div>
+        </div>
+
+        <div id="pesticides" class="content-section">
+            <div class="price-grid" id="pesticidesGrid"></div>
+        </div>
+
+        <div id="fertilizers" class="content-section">
+            <div class="price-grid" id="fertilizersGrid"></div>
+        </div>
+
+        <div id="seeds" class="content-section">
+            <div class="price-grid" id="seedsGrid"></div>
+        </div>
+
+        <div id="equipment" class="content-section">
+            <div class="price-grid" id="equipmentGrid"></div>
+        </div>
+
+        <div class="market-info">
+            <h3>📊 Market Information & Guidelines</h3>
+            <p class="info-text">
+                Welcome to India's most comprehensive Farmer Market Price Portal. This platform aggregates real-time pricing 
+                information for agricultural products across all Indian states. Our database includes hundreds of crop varieties, 
+                pesticides, fertilizers, seeds, and farming equipment to help you make informed decisions.
+            </p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>💡 How to Use</h4>
+                    <p>Use search and filter options to find specific products. Compare prices across different states to get the best deals.</p>
+                </div>
+                <div class="info-card">
+                    <h4>📈 Price Trends</h4>
+                    <p>Track price movements with trend indicators. Green (↑) shows price increase, Red (↓) shows decrease, Yellow (→) indicates stable prices.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🔄 Updates</h4>
+                    <p>Prices are updated regularly based on market conditions and wholesale rates from major agricultural markets.</p>
+                </div>
+                <div class="info-card">
+                    <h4>⚠️ Disclaimer</h4>
+                    <p>Prices shown are indicative. Please verify with your local agricultural market or authorized dealer before making purchases.</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="last-updated">Last Updated: <span id="lastUpdate"></span></p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script>
+        const data = {
+            crops: generateCropsData(),
+            pesticides: generatePesticidesData(),
+            fertilizers: generateFertilizersData(),
+            seeds: generateSeedsData(),
+            equipment: generateEquipmentData()
+        };
+
+        function generateCropsData() {
+            const states = [
+                {id: 'punjab', name: 'Punjab'}, {id: 'haryana', name: 'Haryana'}, {id: 'uttar-pradesh', name: 'Uttar Pradesh'},
+                {id: 'madhya-pradesh', name: 'Madhya Pradesh'}, {id: 'rajasthan', name: 'Rajasthan'}, {id: 'gujarat', name: 'Gujarat'},
+                {id: 'maharashtra', name: 'Maharashtra'}, {id: 'karnataka', name: 'Karnataka'}, {id: 'tamil-nadu', name: 'Tamil Nadu'},
+                {id: 'andhra-pradesh', name: 'Andhra Pradesh'}, {id: 'telangana', name: 'Telangana'}, {id: 'west-bengal', name: 'West Bengal'},
+                {id: 'bihar', name: 'Bihar'}, {id: 'odisha', name: 'Odisha'}, {id: 'assam', name: 'Assam'}, {id: 'kerala', name: 'Kerala'},
+                {id: 'chhattisgarh', name: 'Chhattisgarh'}, {id: 'jharkhand', name: 'Jharkhand'}, {id: 'uttarakhand', name: 'Uttarakhand'},
+                {id: 'himachal-pradesh', name: 'Himachal Pradesh'}
+            ];
+            
+            const crops = [
+                // Cereals
+                {name: 'Wheat', varieties: ['HD-2967', 'PBW-343', 'Lok-1', 'WH-1105', 'DBW-187'], basePrice: 2050, category: 'Cereals'},
+                {name: 'Rice Paddy', varieties: ['Swarna', 'IR-64', 'Pusa Basmati', 'Samba Mahsuri', 'MTU-1010'], basePrice: 2000, category: 'Cereals'},
+                {name: 'Maize', varieties: ['Hybrid', 'Sweet Corn', 'Baby Corn', 'Yellow Corn'], basePrice: 1850, category: 'Cereals'},
+                {name: 'Bajra', varieties: ['Pearl Millet', 'Hybrid Bajra'], basePrice: 1750, category: 'Cereals'},
+                {name: 'Jowar', varieties: ['Sorghum', 'White Jowar', 'Red Jowar'], basePrice: 1850, category: 'Cereals'},
+                {name: 'Ragi', varieties: ['Finger Millet', 'Brown Ragi'], basePrice: 2050, category: 'Cereals'},
+                {name: 'Barley', varieties: ['RD-2552', 'BH-902'], basePrice: 1650, category: 'Cereals'},
+                
+                // Pulses
+                {name: 'Tur Dal', varieties: ['Arhar', 'Red Gram'], basePrice: 6500, category: 'Pulses'},
+                {name: 'Moong', varieties: ['Green Gram', 'Whole Moong'], basePrice: 7000, category: 'Pulses'},
+                {name: 'Urad', varieties: ['Black Gram', 'Whole Urad'], basePrice: 6900, category: 'Pulses'},
+                {name: 'Chana', varieties: ['Chickpea', 'Kabuli Chana', 'Desi Chana'], basePrice: 5100, category: 'Pulses'},
+                {name: 'Masoor', varieties: ['Lentil', 'Red Lentil'], basePrice: 5800, category: 'Pulses'},
+                {name: 'Rajma', varieties: ['Kidney Beans', 'Red Rajma'], basePrice: 8500, category: 'Pulses'},
+                
+                // Oilseeds
+                {name: 'Soybean', varieties: ['JS-335', 'JS-95-60'], basePrice: 4100, category: 'Oilseeds'},
+                {name: 'Groundnut', varieties: ['Bold', 'Java', 'TG-37A'], basePrice: 5600, category: 'Oilseeds'},
+                {name: 'Mustard', varieties: ['Rai', 'Sarson'], basePrice: 5300, category: 'Oilseeds'},
+                {name: 'Sunflower', varieties: ['Hybrid', 'KBSH-44'], basePrice: 6000, category: 'Oilseeds'},
+                {name: 'Sesame', varieties: ['Til', 'White Sesame'], basePrice: 8500, category: 'Oilseeds'},
+                {name: 'Safflower', varieties: ['Karthi'], basePrice: 5200, category: 'Oilseeds'},
+                {name: 'Linseed', varieties: ['Flaxseed'], basePrice: 5800, category: 'Oilseeds'},
+                
+                // Cash Crops
+                {name: 'Cotton', varieties: ['BT Cotton', 'DCH-32'], basePrice: 6500, category: 'Cash Crops'},
+                {name: 'Sugarcane', varieties: ['Co-86032', 'Co-0238'], basePrice: 305, category: 'Cash Crops'},
+                {name: 'Jute', varieties: ['Tossa', 'White Jute'], basePrice: 4200, category: 'Cash Crops'},
+                
+                // Vegetables
+                {name: 'Potato', varieties: ['Kufri Jyoti', 'Kufri Pukhraj'], basePrice: 850, category: 'Vegetables'},
+                {name: 'Tomato', varieties: ['Hybrid', 'Pusa Ruby'], basePrice: 1200, category: 'Vegetables'},
+                {name: 'Onion', varieties: ['Nasik Red', 'Bellary'], basePrice: 900, category: 'Vegetables'},
+                {name: 'Cabbage', varieties: ['Green Cabbage'], basePrice: 800, category: 'Vegetables'},
+                {name: 'Cauliflower', varieties: ['Snowball'], basePrice: 950, category: 'Vegetables'},
+                {name: 'Brinjal', varieties: ['Eggplant', 'Round'], basePrice: 1100, category: 'Vegetables'},
+                {name: 'Bhindi', varieties: ['Lady Finger'], basePrice: 1300, category: 'Vegetables'},
+                {name: 'Chilli', varieties: ['Green Chilli', 'Red Chilli'], basePrice: 3500, category: 'Vegetables'},
+                {name: 'Capsicum', varieties: ['Bell Pepper'], basePrice: 2200, category: 'Vegetables'},
+                {name: 'Bitter Gourd', varieties: ['Karela'], basePrice: 1500, category: 'Vegetables'},
+                
+                // Fruits
+                {name: 'Mango', varieties: ['Alphonso', 'Kesar', 'Dasheri'], basePrice: 4500, category: 'Fruits'},
+                {name: 'Banana', varieties: ['Robusta', 'Grand Naine'], basePrice: 1200, category: 'Fruits'},
+                {name: 'Grapes', varieties: ['Thompson', 'Anab-e-Shahi'], basePrice: 3500, category: 'Fruits'},
+                {name: 'Apple', varieties: ['Royal Delicious', 'Red Delicious'], basePrice: 6000, category: 'Fruits'},
+                {name: 'Orange', varieties: ['Nagpur Orange'], basePrice: 2500, category: 'Fruits'},
+                {name: 'Pomegranate', varieties: ['Bhagwa', 'Ganesh'], basePrice: 5500, category: 'Fruits'},
+                {name: 'Papaya', varieties: ['Red Lady'], basePrice: 1500, category: 'Fruits'},
+                {name: 'Guava', varieties: ['Allahabad Safeda'], basePrice: 2000, category: 'Fruits'},
+                
+                // Spices
+                {name: 'Turmeric', varieties: ['Erode', 'Rajapore'], basePrice: 7500, category: 'Spices'},
+                {name: 'Coriander', varieties: ['Seed', 'Leaves'], basePrice: 6800, category: 'Spices'},
+                {name: 'Cumin', varieties: ['Jeera'], basePrice: 18000, category: 'Spices'},
+                {name: 'Cardamom', varieties: ['Elaichi'], basePrice: 120000, category: 'Spices'},
+                {name: 'Black Pepper', varieties: ['Malabar'], basePrice: 45000, category: 'Spices'},
+                {name: 'Ginger', varieties: ['Adrak'], basePrice: 8500, category: 'Spices'},
+                {name: 'Garlic', varieties: ['Lahsun'], basePrice: 6000, category: 'Spices'}
+            ];
+            
+            const trends = ['up', 'down', 'stable'];
+            const result = [];
+            
+            crops.forEach(crop => {
+                const selectedStates = _.sampleSize(states, _.random(5, 12));
+                crop.varieties.forEach(variety => {
+                    selectedStates.forEach(state => {
+                        const priceVariation = _.random(-200, 300);
+                        const trend = trends[_.random(0, 2)];
+                        const change = trend === 'up' ? `+${_.random(2, 8)}%` : 
+                                     trend === 'down' ? `-${_.random(1, 5)}%` : '0%';
+                        
+                        result.push({
+                            name: `${crop.name} (${variety})`,
+                            price: crop.basePrice + priceVariation,
+                            unit: 'Per Quintal',
+                            category: crop.category,
+                            trend: trend,
+                            change: change,
+                            state: state.id,
+                            stateName: state.name
+                        });
+                    });
+                });
+            });
+            
+            return result;
+        }
+
+        function generatePesticidesData() {
+            const states = [
+                {id: 'punjab', name: 'Punjab'}, {id: 'haryana', name: 'Haryana'}, {id: 'maharashtra', name: 'Maharashtra'},
+                {id: 'karnataka', name: 'Karnataka'}, {id: 'tamil-nadu', name: 'Tamil Nadu'}, {id: 'andhra-pradesh', name: 'Andhra Pradesh'},
+                {id: 'gujarat', name: 'Gujarat'}, {id: 'uttar-pradesh', name: 'Uttar Pradesh'}, {id: 'madhya-pradesh', name: 'Madhya Pradesh'},
+                {id: 'rajasthan', name: 'Rajasthan'}, {id: 'west-bengal', name: 'West Bengal'}
+            ];
+            
+            const pesticides = [
+                // Insecticides
+                {name: 'Chlorpyrifos 20% EC', price: 380, unit: 'Per Liter', type: 'Insecticide', application: 'Broad Spectrum'},
+                {name: 'Imidacloprid 17.8% SL', price: 520, unit: 'Per Liter', type: 'Insecticide', application: 'Sucking Pests'},
+                {name: 'Lambda Cyhalothrin 5% EC', price: 650, unit: 'Per Liter', type: 'Insecticide', application: 'Lepidopteran Pests'},
+                {name: 'Acetamiprid 20% SP', price: 580, unit: 'Per Kg', type: 'Insecticide', application: 'Aphids, Jassids'},
+                {name: 'Cypermethrin 10% EC', price: 420, unit: 'Per Liter', type: 'Insecticide', application: 'Bollworms'},
+                {name: 'Quinalphos 25% EC', price: 390, unit: 'Per Liter', type: 'Insecticide', application: 'Caterpillars'},
+                {name: 'Profenofos 50% EC', price: 580, unit: 'Per Liter', type: 'Insecticide', application: 'Bollworms'},
+                {name: 'Thiamethoxam 25% WG', price: 720, unit: 'Per Kg', type: 'Insecticide', application: 'Whiteflies, Aphids'},
+                {name: 'Fipronil 5% SC', price: 850, unit: 'Per Liter', type: 'Insecticide', application: 'Termites, Borers'},
+                {name: 'Dimethoate 30% EC', price: 340, unit: 'Per Liter', type: 'Insecticide', application: 'Sucking Pests'},
+                {name: 'Malathion 50% EC', price: 320, unit: 'Per Liter', type: 'Insecticide', application: 'Aphids, Fruit Flies'},
+                {name: 'Emamectin Benzoate 5% SG', price: 1200, unit: 'Per Kg', type: 'Insecticide', application: 'Caterpillars'},
+                {name: 'Indoxacarb 14.5% SC', price: 980, unit: 'Per Liter', type: 'Insecticide', application: 'Lepidopteran Pests'},
+                {name: 'Acephate 75% SP', price: 450, unit: 'Per Kg', type: 'Insecticide', application: 'Thrips, Aphids'},
+                {name: 'Monocrotophos 36% SL', price: 380, unit: 'Per Liter', type: 'Insecticide', application: 'Jassids, Bollworms'},
+                
+                // Fungicides
+                {name: 'Mancozeb 75% WP', price: 280, unit: 'Per Kg', type: 'Fungicide', application: 'Leaf Spot, Blight'},
+                {name: 'Carbendazim 50% WP', price: 450, unit: 'Per Kg', type: 'Fungicide', application: 'Seed Treatment'},
+                {name: 'Copper Oxychloride 50% WP', price: 220, unit: 'Per Kg', type: 'Fungicide', application: 'Downy Mildew'},
+                {name: 'Propiconazole 25% EC', price: 680, unit: 'Per Liter', type: 'Fungicide', application: 'Rust, Leaf Spot'},
+                {name: 'Hexaconazole 5% EC', price: 520, unit: 'Per Liter', type: 'Fungicide', application: 'Powdery Mildew'},
+                {name: 'Tebuconazole 25.9% EC', price: 750, unit: 'Per Liter', type: 'Fungicide', application: 'Sheath Blight'},
+                {name: 'Sulphur 80% WP', price: 180, unit: 'Per Kg', type: 'Fungicide', application: 'Powdery Mildew'},
+                {name: 'Thiophanate Methyl 70% WP', price: 580, unit: 'Per Kg', type: 'Fungicide', application: 'Anthracnose'},
+                {name: 'Azoxystrobin 23% SC', price: 1200, unit: 'Per Liter', type: 'Fungicide', application: 'Broad Spectrum'},
+                {name: 'Metalaxyl 8% + Mancozeb 64% WP', price: 420, unit: 'Per Kg', type: 'Fungicide', application: 'Downy Mildew'},
+                {name: 'Zineb 75% WP', price: 290, unit: 'Per Kg', type: 'Fungicide', application: 'Leaf Diseases'},
+                
+                // Herbicides
+                {name: 'Glyphosate 41% SL', price: 320, unit: 'Per Liter', type: 'Herbicide', application: 'Non-Selective'},
+                {name: '2,4-D Ethyl Ester 38% EC', price: 290, unit: 'Per Liter', type: 'Herbicide', application: 'Broad Leaf Weeds'},
+                {name: 'Pretilachlor 50% EC', price: 480, unit: 'Per Liter', type: 'Herbicide', application: 'Rice Weeds'},
+                {name: 'Atrazine 50% WP', price: 320, unit: 'Per Kg', type: 'Herbicide', application: 'Maize, Sugarcane'},
+                {name: 'Pendimethalin 30% EC', price: 380, unit: 'Per Liter', type: 'Herbicide', application: 'Pre-Emergence'},
+                {name: 'Quizalofop Ethyl 5% EC', price: 680, unit: 'Per Liter', type: 'Herbicide', application: 'Grassy Weeds'},
+                {name: 'Imazethapyr 10% SL', price: 720, unit: 'Per Liter', type: 'Herbicide', application: 'Soybean, Pulses'},
+                {name: 'Butachlor 50% EC', price: 420, unit: 'Per Liter', type: 'Herbicide', application: 'Rice Transplanted'},
+                {name: 'Paraquat Dichloride 24% SL', price: 380, unit: 'Per Liter', type: 'Herbicide', application: 'Non-Selective'},
+                {name: 'Oxyfluorfen 23.5% EC', price: 580, unit: 'Per Liter', type: 'Herbicide', application: 'Pre-Emergence'}
+            ];
+            
+            const result = [];
+            pesticides.forEach(pesticide => {
+                const selectedStates = _.sampleSize(states, _.random(6, 11));
+                selectedStates.forEach(state => {
+                    const priceVariation = _.random(-50, 100);
+                    result.push({
+                        name: pesticide.name,
+                        price: pesticide.price + priceVariation,
+                        unit: pesticide.unit,
+                        type: pesticide.type,
+                        application: pesticide.application,
+                        state: state.id,
+                        stateName: state.name
+                    });
+                });
+            });
+            
+            return result;
+        }
+
+        function generateFertilizersData() {
+            const states = [
+                {id: 'punjab', name: 'Punjab'}, {id: 'haryana', name: 'Haryana'}, {id: 'uttar-pradesh', name: 'Uttar Pradesh'},
+                {id: 'madhya-pradesh', name: 'Madhya Pradesh'}, {id: 'maharashtra', name: 'Maharashtra'}, {id: 'karnataka', name: 'Karnataka'},
+                {id: 'tamil-nadu', name: 'Tamil Nadu'}, {id: 'andhra-pradesh', name: 'Andhra Pradesh'}, {id: 'telangana', name: 'Telangana'},
+                {id: 'west-bengal', name: 'West Bengal'}, {id: 'gujarat', name: 'Gujarat'}, {id: 'rajasthan', name: 'Rajasthan'}
+            ];
+            
+            const fertilizers = [
+                // Nitrogenous Fertilizers
+                {name: 'Urea (46% N)', price: 268, unit: 'Per 50kg Bag', nutrient: '46% Nitrogen', type: 'Nitrogenous'},
+                {name: 'Ammonium Sulphate (20% N)', price: 520, unit: 'Per 50kg Bag', nutrient: '20% N, 24% S', type: 'Nitrogenous'},
+                {name: 'Calcium Ammonium Nitrate (CAN)', price: 580, unit: 'Per 50kg Bag', nutrient: '25% N', type: 'Nitrogenous'},
+                {name: 'Ammonium Chloride', price: 480, unit: 'Per 50kg Bag', nutrient: '25% N', type: 'Nitrogenous'},
+                
+                // Phosphatic Fertilizers
+                {name: 'DAP (Di-Ammonium Phosphate)', price: 1350, unit: 'Per 50kg Bag', nutrient: '18-46-0', type: 'Phosphatic'},
+                {name: 'Single Super Phosphate (SSP)', price: 450, unit: 'Per 50kg Bag', nutrient: '16% P2O5', type: 'Phosphatic'},
+                {name: 'Triple Super Phosphate (TSP)', price: 850, unit: 'Per 50kg Bag', nutrient: '46% P2O5', type: 'Phosphatic'},
+                {name: 'Rock Phosphate', price: 380, unit: 'Per 50kg Bag', nutrient: '20-30% P2O5', type: 'Phosphatic'},
+                
+                // Potassic Fertilizers
+                {name: 'MOP (Muriate of Potash)', price: 1100, unit: 'Per 50kg Bag', nutrient: '60% K2O', type: 'Potassic'},
+                {name: 'SOP (Sulphate of Potash)', price: 1450, unit: 'Per 50kg Bag', nutrient: '50% K2O', type: 'Potassic'},
+                {name: 'Potassium Schoenite', price: 980, unit: 'Per 50kg Bag', nutrient: '22% K2O', type: 'Potassic'},
+                
+                // Complex Fertilizers
+                {name: 'NPK (10:26:26)', price: 1280, unit: 'Per 50kg Bag', nutrient: '10-26-26', type: 'Complex'},
+                {name: 'NPK (12:32:16)', price: 1320, unit: 'Per 50kg Bag', nutrient: '12-32-16', type: 'Complex'},
+                {name: 'NPK (17:17:17)', price: 1250, unit: 'Per 50kg Bag', nutrient: '17-17-17', type: 'Complex'},
+                {name: 'NPK (20:20:0:13)', price: 1180, unit: 'Per 50kg Bag', nutrient: '20-20-0-13', type: 'Complex'},
+                {name: 'NPK (19:19:19)', price: 1350, unit: 'Per 50kg Bag', nutrient: '19-19-19', type: 'Complex'},
+                {name: 'NPK (14:35:14)', price: 1400, unit: 'Per 50kg Bag', nutrient: '14-35-14', type: 'Complex'},
+                {name: 'NPK (15:15:15)', price: 1220, unit: 'Per 50kg Bag', nutrient: '15-15-15', type: 'Complex'},
+                {name: 'NPK (13:0:45)', price: 1480, unit: 'Per 50kg Bag', nutrient: '13-0-45', type: 'Complex'},
+                
+                // Micronutrients
+                {name: 'Zinc Sulphate (ZnSO4)', price: 850, unit: 'Per 25kg Bag', nutrient: '21% Zn', type: 'Micronutrient'},
+                {name: 'Ferrous Sulphate (FeSO4)', price: 620, unit: 'Per 25kg Bag', nutrient: '19% Fe', type: 'Micronutrient'},
+                {name: 'Manganese Sulphate (MnSO4)', price: 780, unit: 'Per 25kg Bag', nutrient: '30% Mn', type: 'Micronutrient'},
+                {name: 'Copper Sulphate (CuSO4)', price: 920, unit: 'Per 25kg Bag', nutrient: '24% Cu', type: 'Micronutrient'},
+                {name: 'Boron (Borax)', price: 1100, unit: 'Per 25kg Bag', nutrient: '11% B', type: 'Micronutrient'},
+                {name: 'Magnesium Sulphate (MgSO4)', price: 680, unit: 'Per 25kg Bag', nutrient: '9.6% Mg', type: 'Micronutrient'},
+                {name: 'Chelated Zinc (Zn-EDTA)', price: 1850, unit: 'Per 25kg Bag', nutrient: '12% Zn', type: 'Micronutrient'},
+                {name: 'Chelated Iron (Fe-EDTA)', price: 1650, unit: 'Per 25kg Bag', nutrient: '12% Fe', type: 'Micronutrient'},
+                {name: 'Molybdenum (Sodium Molybdate)', price: 2200, unit: 'Per 25kg Bag', nutrient: '39% Mo', type: 'Micronutrient'},
+                
+                // Organic Fertilizers
+                {name: 'Vermicompost', price: 280, unit: 'Per 50kg Bag', nutrient: 'Organic Matter', type: 'Organic'},
+                {name: 'Neem Cake', price: 450, unit: 'Per 50kg Bag', nutrient: 'Organic + Pest Repellent', type: 'Organic'},
+                {name: 'Bone Meal', price: 680, unit: 'Per 50kg Bag', nutrient: 'Phosphorus Rich', type: 'Organic'},
+                {name: 'Farmyard Manure (FYM)', price: 180, unit: 'Per 50kg Bag', nutrient: 'Organic Matter', type: 'Organic'},
+                {name: 'Compost', price: 200, unit: 'Per 50kg Bag', nutrient: 'Organic Matter', type: 'Organic'},
+                {name: 'Poultry Manure', price: 320, unit: 'Per 50kg Bag', nutrient: 'High Nitrogen', type: 'Organic'},
+                {name: 'Seaweed Extract', price: 850, unit: 'Per 25kg Bag', nutrient: 'Trace Elements', type: 'Organic'},
+                {name: 'Bio-fertilizer (Rhizobium)', price: 120, unit: 'Per Kg', nutrient: 'Nitrogen Fixing', type: 'Bio-fertilizer'},
+                {name: 'Bio-fertilizer (Azotobacter)', price: 110, unit: 'Per Kg', nutrient: 'Nitrogen Fixing', type: 'Bio-fertilizer'},
+                {name: 'Bio-fertilizer (PSB)', price: 100, unit: 'Per Kg', nutrient: 'Phosphorus Solubilizing', type: 'Bio-fertilizer'}
+            ];
+            
+            const result = [];
+            fertilizers.forEach(fertilizer => {
+                const selectedStates = _.sampleSize(states, _.random(8, 12));
+                selectedStates.forEach(state => {
+                    const priceVariation = _.random(-30, 80);
+                    result.push({
+                        name: fertilizer.name,
+                        price: fertilizer.price + priceVariation,
+                        unit: fertilizer.unit,
+                        nutrient: fertilizer.nutrient,
+                        type: fertilizer.type,
+                        state: state.id,
+                        stateName: state.name
+                    });
+                });
+            });
+            
+            return result;
+        }
+
+        function generateSeedsData() {
+            const states = [
+                {id: 'punjab', name: 'Punjab'}, {id: 'haryana', name: 'Haryana'}, {id: 'uttar-pradesh', name: 'Uttar Pradesh'},
+                {id: 'madhya-pradesh', name: 'Madhya Pradesh'}, {id: 'maharashtra', name: 'Maharashtra'}, {id: 'karnataka', name: 'Karnataka'},
+                {id: 'tamil-nadu', name: 'Tamil Nadu'}, {id: 'andhra-pradesh', name: 'Andhra Pradesh'}, {id: 'rajasthan', name: 'Rajasthan'},
+                {id: 'gujarat', name: 'Gujarat'}, {id: 'west-bengal', name: 'West Bengal'}, {id: 'bihar', name: 'Bihar'}
+            ];
+            
+            const seeds = [
+                // Cereal Seeds
+                {name: 'Wheat Seeds (HD-2967)', price: 45, unit: 'Per Kg', variety: 'High Yield', category: 'Cereals'},
+                {name: 'Wheat Seeds (PBW-343)', price: 48, unit: 'Per Kg', variety: 'Disease Resistant', category: 'Cereals'},
+                {name: 'Wheat Seeds (Lok-1)', price: 42, unit: 'Per Kg', variety: 'Drought Tolerant', category: 'Cereals'},
+                {name: 'Rice Seeds (Pusa Basmati 1121)', price: 120, unit: 'Per Kg', variety: 'Aromatic', category: 'Cereals'},
+                {name: 'Rice Seeds (Swarna)', price: 65, unit: 'Per Kg', variety: 'High Yield', category: 'Cereals'},
+                {name: 'Rice Seeds (IR-64)', price: 58, unit: 'Per Kg', variety: 'Medium Duration', category: 'Cereals'},
+                {name: 'Maize Seeds (Hybrid 900M)', price: 380, unit: 'Per Kg', variety: 'High Yield Hybrid', category: 'Cereals'},
+                {name: 'Maize Seeds (NK-30)', price: 420, unit: 'Per Kg', variety: 'Sweet Corn', category: 'Cereals'},
+                {name: 'Bajra Seeds (Hybrid)', price: 180, unit: 'Per Kg', variety: 'Drought Resistant', category: 'Cereals'},
+                {name: 'Jowar Seeds (CSH-16)', price: 160, unit: 'Per Kg', variety: 'Hybrid', category: 'Cereals'},
+                
+                // Pulse Seeds
+                {name: 'Tur Seeds (BDN-711)', price: 120, unit: 'Per Kg', variety: 'Wilt Resistant', category: 'Pulses'},
+                {name: 'Moong Seeds (Pusa Vishal)', price: 150, unit: 'Per Kg', variety: 'Short Duration', category: 'Pulses'},
+                {name: 'Urad Seeds (Pusa-1)', price: 140, unit: 'Per Kg', variety: 'High Yield', category: 'Pulses'},
+                {name: 'Chana Seeds (JG-16)', price: 85, unit: 'Per Kg', variety: 'Kabuli Type', category: 'Pulses'},
+                {name: 'Masoor Seeds (JL-3)', price: 95, unit: 'Per Kg', variety: 'Bold Grain', category: 'Pulses'},
+                
+                // Oilseed Seeds
+                {name: 'Soybean Seeds (JS-335)', price: 85, unit: 'Per Kg', variety: 'High Oil Content', category: 'Oilseeds'},
+                {name: 'Groundnut Seeds (TAG-24)', price: 90, unit: 'Per Kg', variety: 'Bold Type', category: 'Oilseeds'},
+                {name: 'Mustard Seeds (Pusa Bold)', price: 95, unit: 'Per Kg', variety: 'High Yield', category: 'Oilseeds'},
+                {name: 'Sunflower Seeds (KBSH-44)', price: 180, unit: 'Per Kg', variety: 'Hybrid', category: 'Oilseeds'},
+                {name: 'Sesame Seeds (RT-346)', price: 220, unit: 'Per Kg', variety: 'White Variety', category: 'Oilseeds'},
+                
+                // Cotton Seeds
+                {name: 'Cotton Seeds (BT-RCH-2)', price: 850, unit: 'Per 450g Packet', variety: 'BT Hybrid', category: 'Cotton'},
+                {name: 'Cotton Seeds (Bunny Bt)', price: 820, unit: 'Per 450g Packet', variety: 'Bollworm Resistant', category: 'Cotton'},
+                {name: 'Cotton Seeds (MECH-162)', price: 780, unit: 'Per 450g Packet', variety: 'Hybrid', category: 'Cotton'},
+                
+                // Vegetable Seeds
+                {name: 'Tomato Seeds (Pusa Ruby)', price: 1200, unit: 'Per 100g', variety: 'Determinate', category: 'Vegetables'},
+                {name: 'Tomato Seeds (Arka Vikas)', price: 1100, unit: 'Per 100g', variety: 'Heat Tolerant', category: 'Vegetables'},
+                {name: 'Tomato Seeds (Hybrid Naveen)', price: 2800, unit: 'Per 10g', variety: 'F1 Hybrid', category: 'Vegetables'},
+                {name: 'Brinjal Seeds (Pusa Purple Long)', price: 800, unit: 'Per 100g', variety: 'Long Type', category: 'Vegetables'},
+                {name: 'Chilli Seeds (Pusa Jwala)', price: 1500, unit: 'Per 100g', variety: 'Hot', category: 'Vegetables'},
+                {name: 'Okra Seeds (Pusa Sawani)', price: 650, unit: 'Per Kg', variety: 'High Yield', category: 'Vegetables'},
+                {name: 'Cabbage Seeds (Golden Acre)', price: 2200, unit: 'Per 100g', variety: 'Early Variety', category: 'Vegetables'},
+                {name: 'Cauliflower Seeds (Snowball)', price: 2500, unit: 'Per 100g', variety: 'White Variety', category: 'Vegetables'},
+                {name: 'Onion Seeds (Nasik Red)', price: 850, unit: 'Per 100g', variety: 'Red Variety', category: 'Vegetables'},
+                {name: 'Onion Seeds (Bhima Super)', price: 900, unit: 'Per 100g', variety: 'Late Kharif', category: 'Vegetables'},
+                {name: 'Potato Seeds (Kufri Jyoti)', price: 32, unit: 'Per Kg', variety: 'Certified Seed', category: 'Vegetables'},
+                {name: 'Carrot Seeds (Pusa Kesar)', price: 1800, unit: 'Per Kg', variety: 'Orange Type', category: 'Vegetables'},
+                {name: 'Cucumber Seeds (Pusa Sanyog)', price: 1400, unit: 'Per Kg', variety: 'Hybrid', category: 'Vegetables'},
+                {name: 'Bitter Gourd Seeds', price: 1600, unit: 'Per Kg', variety: 'Long Type', category: 'Vegetables'},
+                {name: 'Bottle Gourd Seeds', price: 800, unit: 'Per Kg', variety: 'Long Fruited', category: 'Vegetables'},
+                {name: 'Ridge Gourd Seeds', price: 950, unit: 'Per Kg', variety: 'High Yield', category: 'Vegetables'},
+                {name: 'Pumpkin Seeds', price: 650, unit: 'Per Kg', variety: 'Large Fruited', category: 'Vegetables'},
+                {name: 'Watermelon Seeds (Sugar Baby)', price: 2200, unit: 'Per Kg', variety: 'Hybrid', category: 'Vegetables'},
+                {name: 'Muskmelon Seeds', price: 2500, unit: 'Per Kg', variety: 'Hybrid', category: 'Vegetables'},
+                
+                // Fruit Seeds/Saplings
+                {name: 'Mango Grafted Plant (Alphonso)', price: 450, unit: 'Per Plant', variety: 'Grafted', category: 'Fruits'},
+                {name: 'Banana Tissue Culture Plant', price: 25, unit: 'Per Plant', variety: 'Grand Naine', category: 'Fruits'},
+                {name: 'Papaya Seeds (Red Lady)', price: 850, unit: 'Per 10g', variety: 'Hybrid', category: 'Fruits'},
+                {name: 'Pomegranate Grafted Plant', price: 380, unit: 'Per Plant', variety: 'Bhagwa', category: 'Fruits'},
+                {name: 'Guava Grafted Plant', price: 220, unit: 'Per Plant', variety: 'Allahabad Safeda', category: 'Fruits'},
+                
+                // Fodder Seeds
+                {name: 'Berseem Seeds', price: 85, unit: 'Per Kg', variety: 'Mescavi', category: 'Fodder'},
+                {name: 'Lucerne Seeds', price: 180, unit: 'Per Kg', variety: 'Alfalfa', category: 'Fodder'},
+                {name: 'Jowar Fodder Seeds', price: 65, unit: 'Per Kg', variety: 'Multicut', category: 'Fodder'},
+                {name: 'Maize Fodder Seeds', price: 75, unit: 'Per Kg', variety: 'African Tall', category: 'Fodder'}
+            ];
+            
+            const result = [];
+            seeds.forEach(seed => {
+                const selectedStates = _.sampleSize(states, _.random(7, 12));
+                selectedStates.forEach(state => {
+                    const priceVariation = _.random(-10, 30);
+                    result.push({
+                        name: seed.name,
+                        price: seed.price + priceVariation,
+                        unit: seed.unit,
+                        variety: seed.variety,
+                        category: seed.category,
+                        state: state.id,
+                        stateName: state.name
+                    });
+                });
+            });
+            
+            return result;
+        }
+
+        function generateEquipmentData() {
+            const states = [
+                {id: 'punjab', name: 'Punjab'}, {id: 'haryana', name: 'Haryana'}, {id: 'uttar-pradesh', name: 'Uttar Pradesh'},
+                {id: 'madhya-pradesh', name: 'Madhya Pradesh'}, {id: 'maharashtra', name: 'Maharashtra'}, {id: 'karnataka', name: 'Karnataka'},
+                {id: 'tamil-nadu', name: 'Tamil Nadu'}, {id: 'gujarat', name: 'Gujarat'}, {id: 'rajasthan', name: 'Rajasthan'},
+                {id: 'andhra-pradesh', name: 'Andhra Pradesh'}, {id: 'telangana', name: 'Telangana'}
+            ];
+            
+            const equipment = [
+                // Spraying Equipment
+                {name: 'Manual Knapsack Sprayer (16L)', price: 2500, unit: 'Per Unit', capacity: '16 Liter', category: 'Spraying'},
+                {name: 'Battery Operated Sprayer', price: 8500, unit: 'Per Unit', capacity: '16 Liter, 12V', category: 'Spraying'},
+                {name: 'Power Sprayer (Petrol)', price: 18500, unit: 'Per Unit', capacity: '25 Liter Engine', category: 'Spraying'},
+                {name: 'Two in One Sprayer', price: 3200, unit: 'Per Unit', capacity: '16L Manual/Pump', category: 'Spraying'},
+                {name: 'Motorized Knapsack Sprayer', price: 15000, unit: 'Per Unit', capacity: '20 Liter', category: 'Spraying'},
+                {name: 'Tractor Mounted Sprayer', price: 45000, unit: 'Per Unit', capacity: '400 Liter Tank', category: 'Spraying'},
+                
+                // Irrigation Equipment
+                {name: 'Drip Irrigation Kit (1 Acre)', price: 12000, unit: 'Per Acre', coverage: '1 Acre Coverage', category: 'Irrigation'},
+                {name: 'Drip Irrigation Kit (5 Acre)', price: 55000, unit: 'Per 5 Acre', coverage: '5 Acre Coverage', category: 'Irrigation'},
+                {name: 'Sprinkler System (1 Acre)', price: 18000, unit: 'Per Acre', coverage: '1 Acre Coverage', category: 'Irrigation'},
+                {name: 'Mini Sprinkler Set', price: 8500, unit: 'Per Set', coverage: '0.25 Acre', category: 'Irrigation'},
+                {name: 'Water Pump (1 HP)', price: 8500, unit: 'Per Unit', power: '1 HP Electric', category: 'Irrigation'},
+                {name: 'Water Pump (3 HP)', price: 15500, unit: 'Per Unit', power: '3 HP Electric', category: 'Irrigation'},
+                {name: 'Water Pump (5 HP)', price: 22000, unit: 'Per Unit', power: '5 HP Diesel', category: 'Irrigation'},
+                {name: 'Submersible Pump (3 HP)', price: 18500, unit: 'Per Unit', power: '3 HP Electric', category: 'Irrigation'},
+                {name: 'Solar Water Pump (3 HP)', price: 85000, unit: 'Per Unit', power: '3 HP Solar', category: 'Irrigation'},
+                
+                // Tillage Equipment
+                {name: 'Cultivator (9 Tyne)', price: 28000, unit: 'Per Unit', width: '9 Tynes', category: 'Tillage'},
+                {name: 'Rotavator (5.5 Feet)', price: 65000, unit: 'Per Unit', width: '5.5 Feet', category: 'Tillage'},
+                {name: 'Rotavator (7 Feet)', price: 85000, unit: 'Per Unit', width: '7 Feet', category: 'Tillage'},
+                {name: 'Disc Harrow', price: 45000, unit: 'Per Unit', discs: '20 Disc', category: 'Tillage'},
+                {name: 'Disc Plough (3 Disc)', price: 38000, unit: 'Per Unit', discs: '3 Disc', category: 'Tillage'},
+                {name: 'Mould Board Plough', price: 22000, unit: 'Per Unit', type: 'Single Bottom', category: 'Tillage'},
+                {name: 'Subsoiler', price: 32000, unit: 'Per Unit', depth: 'Deep Tillage', category: 'Tillage'},
+                {name: 'Ridger', price: 18000, unit: 'Per Unit', rows: '2 Row', category: 'Tillage'},
+                
+                // Seeding Equipment
+                {name: 'Seed Drill (9 Row)', price: 28000, unit: 'Per Unit', rows: '9 Rows', category: 'Seeding'},
+                {name: 'Seed Drill (13 Row)', price: 42000, unit: 'Per Unit', rows: '13 Rows', category: 'Seeding'},
+                {name: 'Zero Till Seed Drill', price: 65000, unit: 'Per Unit', rows: '9 Rows', category: 'Seeding'},
+                {name: 'Seed cum Fertilizer Drill', price: 48000, unit: 'Per Unit', rows: '11 Rows', category: 'Seeding'},
+                {name: 'Manual Seed Planter', price: 3500, unit: 'Per Unit', type: 'Hand Operated', category: 'Seeding'},
+                {name: 'Multi Crop Planter', price: 55000, unit: 'Per Unit', crops: 'Multiple Crops', category: 'Seeding'},
+                
+                // Weeding Equipment
+                {name: 'Manual Weeder (Wheel Hoe)', price: 3500, unit: 'Per Unit', type: 'Push Type', category: 'Weeding'},
+                {name: 'Cono Weeder', price: 4200, unit: 'Per Unit', type: 'Rice Weeder', category: 'Weeding'},
+                {name: 'Power Weeder (Petrol)', price: 22000, unit: 'Per Unit', power: '2 HP Engine', category: 'Weeding'},
+                {name: 'Battery Weeder', price: 18000, unit: 'Per Unit', power: '12V Battery', category: 'Weeding'},
+                {name: 'Tractor Mounted Weeder', price: 35000, unit: 'Per Unit', rows: '4-6 Rows', category: 'Weeding'},
+                
+                // Harvesting Equipment
+                {name: 'Paddy Reaper', price: 45000, unit: 'Per Unit', power: '5 HP Diesel', category: 'Harvesting'},
+                {name: 'Wheat Reaper', price: 42000, unit: 'Per Unit', power: '5 HP Diesel', category: 'Harvesting'},
+                {name: 'Combine Harvester (Small)', price: 850000, unit: 'Per Unit', capacity: 'Mini Combine', category: 'Harvesting'},
+                {name: 'Maize Sheller (Manual)', price: 8500, unit: 'Per Unit', type: 'Hand Operated', category: 'Harvesting'},
+                {name: 'Maize Sheller (Electric)', price: 28000, unit: 'Per Unit', power: '2 HP Motor', category: 'Harvesting'},
+                {name: 'Groundnut Harvester', price: 65000, unit: 'Per Unit', type: 'Tractor Mounted', category: 'Harvesting'},
+                {name: 'Potato Digger', price: 55000, unit: 'Per Unit', type: 'Tractor Mounted', category: 'Harvesting'},
+                
+                // Threshing Equipment
+                {name: 'Wheat Thresher (5 HP)', price: 45000, unit: 'Per Unit', power: '5 HP Diesel', category: 'Threshing'},
+                {name: 'Paddy Thresher (8 HP)', price: 65000, unit: 'Per Unit', power: '8 HP Diesel', category: 'Threshing'},
+                {name: 'Multi Crop Thresher', price: 75000, unit: 'Per Unit', power: '10 HP Diesel', category: 'Threshing'},
+                {name: 'Axial Flow Paddy Thresher', price: 85000, unit: 'Per Unit', power: '12 HP', category: 'Threshing'},
+                
+                // Post Harvest Equipment
+                {name: 'Chaff Cutter (Manual)', price: 8500, unit: 'Per Unit', capacity: 'Hand Operated', category: 'Post Harvest'},
+                {name: 'Chaff Cutter (Electric)', price: 18500, unit: 'Per Unit', power: '2 HP Motor', category: 'Post Harvest'},
+                {name: 'Chaff Cutter (Diesel)', price: 28000, unit: 'Per Unit', power: '5 HP Engine', category: 'Post Harvest'},
+                {name: 'Winnowing Machine', price: 12000, unit: 'Per Unit', type: 'Grain Cleaner', category: 'Post Harvest'},
+                {name: 'Grain Dryer (Electric)', price: 45000, unit: 'Per Unit', capacity: '500 Kg/Hour', category: 'Post Harvest'},
+                {name: 'Storage Bin (5 Ton)', price: 35000, unit: 'Per Unit', capacity: '5 Ton Capacity', category: 'Post Harvest'},
+                {name: 'Storage Bin (10 Ton)', price: 65000, unit: 'Per Unit', capacity: '10 Ton Capacity', category: 'Post Harvest'},
+                
+                // Farm Machinery
+                {name: 'Tractor (35 HP)', price: 550000, unit: 'Per Unit', power: '35 HP', category: 'Machinery'},
+                {name: 'Tractor (50 HP)', price: 750000, unit: 'Per Unit', power: '50 HP', category: 'Machinery'},
+                {name: 'Power Tiller (8 HP)', price: 85000, unit: 'Per Unit', power: '8 HP Diesel', category: 'Machinery'},
+                {name: 'Mini Tractor (20 HP)', price: 350000, unit: 'Per Unit', power: '20 HP', category: 'Machinery'},
+                {name: 'Brush Cutter', price: 15000, unit: 'Per Unit', power: '2 HP Petrol', category: 'Machinery'},
+                {name: 'Lawn Mower', price: 12000, unit: 'Per Unit', type: 'Push Type', category: 'Machinery'},
+                
+                // Garden Tools
+                {name: 'Spade', price: 350, unit: 'Per Unit', type: 'Garden Tool', category: 'Hand Tools'},
+                {name: 'Khurpi (Hand Hoe)', price: 120, unit: 'Per Unit', type: 'Weeding Tool', category: 'Hand Tools'},
+                {name: 'Sickle', price: 150, unit: 'Per Unit', type: 'Harvesting Tool', category: 'Hand Tools'},
+                {name: 'Pruning Shears', price: 280, unit: 'Per Unit', type: 'Garden Tool', category: 'Hand Tools'},
+                {name: 'Garden Fork', price: 320, unit: 'Per Unit', type: 'Garden Tool', category: 'Hand Tools'},
+                {name: 'Rake', price: 250, unit: 'Per Unit', type: 'Garden Tool', category: 'Hand Tools'},
+                {name: 'Wheelbarrow', price: 2500, unit: 'Per Unit', capacity: '100 Kg Load', category: 'Hand Tools'},
+                {name: 'Water Can (20L)', price: 450, unit: 'Per Unit', capacity: '20 Liter', category: 'Hand Tools'},
+                
+                // Mulching & Protection
+                {name: 'Mulch Film (25 Micron)', price: 35, unit: 'Per Meter', width: '1.2 Meter Width', category: 'Protection'},
+                {name: 'Shade Net (50%)', price: 18, unit: 'Per Sq Meter', shade: '50% Shade', category: 'Protection'},
+                {name: 'Shade Net (75%)', price: 22, unit: 'Per Sq Meter', shade: '75% Shade', category: 'Protection'},
+                {name: 'Insect Net (40 Mesh)', price: 25, unit: 'Per Sq Meter', mesh: '40 Mesh', category: 'Protection'},
+                {name: 'Bird Net', price: 15, unit: 'Per Sq Meter', type: 'Anti-Bird Net', category: 'Protection'},
+                {name: 'Anti-Hail Net', price: 32, unit: 'Per Sq Meter', type: 'Hail Protection', category: 'Protection'},
+                
+                // Greenhouse Equipment
+                {name: 'Polyhouse Kit (500 Sqm)', price: 250000, unit: 'Per Kit', area: '500 Sq Meter', category: 'Greenhouse'},
+                {name: 'Polyhouse Kit (1000 Sqm)', price: 450000, unit: 'Per Kit', area: '1000 Sq Meter', category: 'Greenhouse'},
+                {name: 'Greenhouse Heater', price: 18000, unit: 'Per Unit', power: 'Electric', category: 'Greenhouse'},
+                {name: 'Exhaust Fan (Industrial)', price: 8500, unit: 'Per Unit', size: '24 Inch', category: 'Greenhouse'},
+                {name: 'Fogger System', price: 25000, unit: 'Per Set', coverage: '500 Sq Meter', category: 'Greenhouse'},
+                
+                // Dairy Equipment
+                {name: 'Milking Machine (Single Bucket)', price: 35000, unit: 'Per Unit', capacity: '25 Liter', category: 'Dairy'},
+                {name: 'Milk Can (40L Aluminum)', price: 3200, unit: 'Per Unit', capacity: '40 Liter', category: 'Dairy'},
+                {name: 'Cream Separator (Electric)', price: 28000, unit: 'Per Unit', capacity: '100 L/Hour', category: 'Dairy'},
+                {name: 'Milk Analyzer', price: 85000, unit: 'Per Unit', type: 'Ultrasonic', category: 'Dairy'},
+                {name: 'Chaff Cutter for Cattle', price: 22000, unit: 'Per Unit', power: '3 HP Motor', category: 'Dairy'}
+            ];
+            
+            const result = [];
+            equipment.forEach(item => {
+                const selectedStates = _.sampleSize(states, _.random(6, 11));
+                selectedStates.forEach(state => {
+                    const priceVariation = _.random(-500, 1000);
+                    result.push({
+                        name: item.name,
+                        price: item.price + priceVariation,
+                        unit: item.unit,
+                        specification: item.capacity || item.coverage || item.width || item.rows || item.type || item.power || item.discs || item.depth || item.crops || item.area || item.size || item.shade || item.mesh,
+                        category: item.category,
+                        state: state.id,
+                        stateName: state.name
+                    });
+                });
+            });
+            
+            return result;
+        }
+
+        function renderCards(category, filteredData) {
+            const grid = document.getElementById(category + 'Grid');
+            grid.innerHTML = '';
+
+            if (filteredData.length === 0) {
+                grid.innerHTML = '<div class="no-results">No results found. Try adjusting your search or filters.</div>';
+                return;
+            }
+
+            filteredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'price-card';
+                
+                let content = `
+                    <h3>
+                        ${item.name}
+                        <span class="state-badge">${item.stateName}</span>
+                    </h3>
+                `;
+                
+                if (category === 'crops') {
+                    content += `
+                        <div class="price-info">
+                            <span class="label">Market Price:</span>
+                            <span class="value price">₹${item.price.toLocaleString('en-IN')}/${item.unit.replace('Per ', '')}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Category:</span>
+                            <span class="value">${item.category}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Trend:</span>
+                            <span class="trend ${item.trend}">${item.change}</span>
+                        </div>
+                    `;
+                } else if (category === 'pesticides') {
+                    content += `
+                        <div class="price-info">
+                            <span class="label">Price:</span>
+                            <span class="value price">₹${item.price.toLocaleString('en-IN')}/${item.unit.replace('Per ', '')}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Type:</span>
+                            <span class="value">${item.type}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Application:</span>
+                            <span class="value">${item.application}</span>
+                        </div>
+                    `;
+                } else if (category === 'fertilizers') {
+                    content += `
+                        <div class="price-info">
+                            <span class="label">Price:</span>
+                            <span class="value price">₹${item.price.toLocaleString('en-IN')}/${item.unit.replace('Per ', '')}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Nutrient:</span>
+                            <span class="value">${item.nutrient}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Type:</span>
+                            <span class="value">${item.type}</span>
+                        </div>
+                    `;
+                } else if (category === 'seeds') {
+                    content += `
+                        <div class="price-info">
+                            <span class="label">Price:</span>
+                            <span class="value price">₹${item.price.toLocaleString('en-IN')}/${item.unit.replace('Per ', '')}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Variety:</span>
+                            <span class="value">${item.variety}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Category:</span>
+                            <span class="value">${item.category}</span>
+                        </div>
+                    `;
+                } else if (category === 'equipment') {
+                    content += `
+                        <div class="price-info">
+                            <span class="label">Price:</span>
+                            <span class="value price">₹${item.price.toLocaleString('en-IN')}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Category:</span>
+                            <span class="value">${item.category}</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="label">Specification:</span>
+                            <span class="value">${item.specification}</span>
+                        </div>
+                    `;
+                }
+                
+                card.innerHTML = content;
+                grid.appendChild(card);
+            });
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+            
+            updateCategoryFilter();
+            filterAndSearch();
+        }
+
+        function updateCategoryFilter() {
+            const activeTab = document.querySelector('.content-section.active').id;
+            const categoryFilter = document.getElementById('categoryFilter');
+            const categories = [...new Set(data[activeTab].map(item => item.category || item.type))];
+            
+            categoryFilter.innerHTML = '<option value="">All Categories</option>';
+            categories.sort().forEach(cat => {
+                categoryFilter.innerHTML += `<option value="${cat}">${cat}</option>`;
+            });
+        }
+
+        function sortData(dataArray, sortBy) {
+            const sorted = [...dataArray];
+            switch(sortBy) {
+                case 'name':
+                    return sorted.sort((a, b) => a.name.localeCompare(b.name));
+                case 'name-desc':
+                    return sorted.sort((a, b) => b.name.localeCompare(a.name));
+                case 'price':
+                    return sorted.sort((a, b) => a.price - b.price);
+                case 'price-desc':
+                    return sorted.sort((a, b) => b.price - a.price);
+                case 'state':
+                    return sorted.sort((a, b) => a.stateName.localeCompare(b.stateName));
+                default:
+                    return sorted;
+            }
+        }
+
+        function filterAndSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const stateFilter = document.getElementById('stateFilter').value;
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const sortBy = document.getElementById('sortSelect').value;
+            
+            const activeTab = document.querySelector('.content-section.active').id;
+            let filtered = data[activeTab];
+            
+            if (stateFilter) {
+                filtered = filtered.filter(item => item.state === stateFilter);
+            }
+            
+            if (categoryFilter) {
+                filtered = filtered.filter(item => 
+                    item.category === categoryFilter || item.type === categoryFilter
+                );
+            }
+            
+            if (searchTerm) {
+                filtered = filtered.filter(item => 
+                    item.name.toLowerCase().includes(searchTerm) ||
+                    (item.type && item.type.toLowerCase().includes(searchTerm)) ||
+                    (item.category && item.category.toLowerCase().includes(searchTerm)) ||
+                    (item.nutrient && item.nutrient.toLowerCase().includes(searchTerm)) ||
+                    (item.variety && item.variety.toLowerCase().includes(searchTerm)) ||
+                    (item.application && item.application.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            filtered = sortData(filtered, sortBy);
+            
+            document.getElementById('resultsCount').textContent = `Showing ${filtered.length} items`;
+            renderCards(activeTab, filtered);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', filterAndSearch);
+        document.getElementById('stateFilter').addEventListener('change', filterAndSearch);
+        document.getElementById('categoryFilter').addEventListener('change', filterAndSearch);
+        document.getElementById('sortSelect').addEventListener('change', filterAndSearch);
+
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('lastUpdate').textContent = now.toLocaleString('en-IN', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function updateStats() {
+            document.getElementById('cropCount').textContent = data.crops.length;
+            document.getElementById('pesticideCount').textContent = data.pesticides.length;
+            document.getElementById('fertilizerCount').textContent = data.fertilizers.length;
+            document.getElementById('seedCount').textContent = data.seeds.length;
+            document.getElementById('equipmentCount').textContent = data.equipment.length;
+        }
+
+        // Initialize
+        updateStats();
+        updateCategoryFilter();
+        renderCards('crops', data.crops);
+        document.getElementById('resultsCount').textContent = `Showing ${data.crops.length} items`;
+        updateTime();
+    </script>
+</body>
+</html>
+   

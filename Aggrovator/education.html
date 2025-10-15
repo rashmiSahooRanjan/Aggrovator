@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggrovator - भारतीय किसानों के लिए शिक्षा</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Gujarati:wght@400;700&family=Noto+Sans+Marathi:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --secondary-orange: #ff9800;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* Language-specific fonts */
+        [lang="bn"] { font-family: 'Noto Sans Bengali', Arial, sans-serif; }
+        [lang="ta"] { font-family: 'Noto Sans Tamil', Arial, sans-serif; }
+        [lang="te"] { font-family: 'Noto Sans Telugu', Arial, sans-serif; }
+        [lang="ml"] { font-family: 'Noto Sans Malayalam', Arial, sans-serif; }
+        [lang="kn"] { font-family: 'Noto Sans Kannada', Arial, sans-serif; }
+        [lang="gu"] { font-family: 'Noto Sans Gujarati', Arial, sans-serif; }
+        [lang="mr"] { font-family: 'Noto Sans Marathi', Arial, sans-serif; }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-green), #4caf50);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i { margin-right: 0.5rem; }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--secondary-orange); }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .language-selector select {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .language-selector option {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        #hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1500595046743-cd271d6942ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 2rem;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--secondary-orange), #f57c00);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255,152,0,0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,152,0,0.4);
+        }
+
+        #stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .stat:hover { transform: translateY(-5px); }
+
+        .stat i {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .stat h2 {
+            font-size: 2.5rem;
+            margin: 0.5rem 0;
+            color: var(--primary-green);
+        }
+
+        #categories {
+            padding: 4rem 2rem;
+            background: #e8f5e9;
+            text-align: center;
+        }
+
+        #categories h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+        }
+
+        .category {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-orange));
+        }
+
+        .category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .category i, .category span {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        #courses {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+        }
+
+        .course {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .course:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .course-video {
+            position: relative;
+            height: 200px;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .course-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .course:hover .course-video video {
+            opacity: 1;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            z-index: 10;
+        }
+
+        .play-button:hover { transform: translate(-50%, -50%) scale(1.1); }
+
+        .regional-tips {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-orange);
+        }
+
+        .regional-tips i { color: var(--secondary-orange); margin-right: 0.5rem; }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--primary-green);
+        }
+
+        .course-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary-orange);
+            margin: 0.5rem 0;
+        }
+
+        .course-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-modal.active { display: flex; }
+
+        .video-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .close-video {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        #course-detail {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+
+        #course-detail.active { display: block; }
+
+        .course-detail-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .course-detail-content { grid-template-columns: 1fr; }
+        }
+
+        .course-detail-left h2 { color: var(--primary-green); }
+
+        .course-detail-left p { margin: 1rem 0; }
+
+        .course-detail-left ul { list-style: disc; padding-left: 2rem; }
+
+        .course-detail-right .details { margin-top: 1rem; }
+
+        .course-detail-right .details div { margin-bottom: 0.5rem; }
+
+        .course-detail-right img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .course-highlight {
+            background: #ffeb3b;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        .practice{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-green), #4caf50);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-tractor"></i>
+                <span data-translate="logo">Aggrovator</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html" data-translate="nav-home">home</a></li>
+                <li><a href="../pages/weather.html" data-translate="nav-categories">weather</a></li>
+                <li><a href="../pages/market.html" data-translate="nav-courses">market</a></li>
+                <li><a href="../pages/community.html" data-translate="nav-about">community</a></li>
+                <li><a href="../pages/contact.html" data-translate="nav-contact">contact page</a></li>
+            </ul>
+            <div class="language-selector">
+                <i class="fas fa-globe"></i>
+                <select id="languageSelect">
+                    <option value="hi">हिंदी</option>
+                    <option value="bn">বাংলা</option>
+                    <option value="ta">தமிழ்</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="ml">മലയാളം</option>
+                    <option value="kn">ಕನ್ನಡ</option>
+                    <option value="gu">ગુજરાતી</option>
+                    <option value="mr">मराठी</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" id="home">
+        <div class="hero-content">
+            <h1 data-translate="hero-title">हर फसल, हर कौशल — एक शक्तिशाली मंच</h1>
+            <p data-translate="hero-desc">भारतीय किसानों के लिए आधुनिक कृषि शिक्षा। अपनी स्थानीय भाषा में सीखें और खेती में क्रांति लाएं।</p>
+            <a href="#courses" class="btn" data-translate="hero-btn">कोर्स एक्सप्लोर करें</a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section id="stats">
+        <div class="stat loading">
+            <i class="fas fa-book-open"></i>
+            <h2 data-translate="stats-courses">500+</h2>
+            <p data-translate="stats-courses-desc">ऑनलाइन कोर्स</p>
+        </div>
+        <div class="stat loading">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h2 data-translate="stats-instructors">200+</h2>
+            <p data-translate="stats-instructors-desc">सत्यापित प्रशिक्षक</p>
+        </div>
+        <div class="stat loading">
+            <i class="fas fa-certificate"></i>
+            <h2 data-translate="stats-certificates">1000+</h2>
+            <p data-translate="stats-certificates-desc">प्रमाण पत्र</p>
+        </div>
+        <div class="stat loading">
+            <i class="fas fa-users"></i>
+            <h2 data-translate="stats-farmers">50K+</h2>
+            <p data-translate="stats-farmers-desc">संतुष्ट किसान</p>
+        </div>
+    </section>
+
+    <section id="categories">
+        <h2 data-translate="categories-title">शीर्ष कोर्स श्रेणियाँ</h2>
+        <p data-translate="categories-desc">अपनी क्षेत्र के अनुसार कोर्स चुनें</p>
+        <div class="categories-grid">
+            <a href="Course0.html" class="practice"><div class="category loading" data-category="pesticides">
+                <i class="fas fa-spray-can"></i>
+                <h3 data-translate="category-pesticides">कीटनाशक</h3>
+            </div></a>
+            <a href="Course1.html" class="practice">
+                 <div class="category loading" data-category="fertilizers">
+                <span>🌱</span>
+                <h3 data-translate="category-fertilizers">उर्वरक</h3>
+            </div>
+            </a>
+            <a href="Course2.html" class="practice">
+                 <div class="category loading" data-category="seeds">
+                <span>🌿</span>
+                <h3 data-translate="category-seeds">बीज</h3>
+            </div>
+            </a>
+           <a href="Course3 .html" class="practice">
+              <div class="category loading" data-category="equipment">
+                <span>🚜</span>
+                <h3 data-translate="category-equipment">उपकरण</h3>
+            </div>
+           </a>
+           <a href="Course4.html" class="practice">
+                <div class="category loading" data-category="animal">
+                <i class="fas fa-cow"></i>
+                <h3 data-translate="category-animal">पशु प्रबंधन</h3>
+            </div>
+           </a>
+          
+        <a href="Course5.html" class="practice">
+                 <div class="category loading" data-category="technology">
+                <i class="fas fa-robot"></i>
+                <h3 data-translate="category-technology">आधुनिक तकनीक</h3>
+            </div>
+        </a>
+       <a href="Course6.html" class="practice">
+                    <div class="category loading" data-category="soil-testing">
+                <i class="fas fa-vial"></i>
+                <h3 data-translate="category-soil-testing">मिट्टी परीक्षण</h3>
+            </div>
+       </a>
+
+<a href="Course7.html" class="practice">
+        <div class="category loading" data-category="crop-rotation">
+                <i class="fas fa-sync"></i>
+                <h3 data-translate="category-crop-rotation">फसल चक्रण</h3>
+            </div>
+</a>
+<a href="./News.html" class="practice">
+        <div class="category loading" data-category="crop-rotation">
+                
+                <h3 data-translate="category-Resources">संसाधन</h3>
+            </div>
+</a>        
+      
+</div>
+    </section>
+
+    <section id="courses">
+        <h2 data-translate="courses-title">प्रमुख कोर्स</h2>
+        <div class="courses-grid">
+            <div class="course loading" data-course="pesticides">
+                <div class="course-video">
+                    <video muted loop poster="https://via.placeholder.com/350x200?text=Pesticides+Course">
+                        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+                    </video>
+                    <button class="play-button" data-video="pesticides">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="regional-tips">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-translate="tip-pesticides">महाराष्ट्र के लिए: जैविक कीटनाशक से 25% फसल हानि कम करें</span>
+                </div>
+                <div class="course-content">
+                    <h3 data-translate="course-pesticides-title">कीटनाशक प्रबंधन</h3>
+                    <div class="course-price">₹2,500</div>
+                    <div class="course-meta" data-translate="course-pesticides-meta">मध्यम | 5 सप्ताह | प्रमाण पत्र</div>
+                    <a href="#" class="btn enroll-btn" data-course="pesticides" data-translate="enroll-btn">अभी नामांकन करें</a>
+                </div>
+            </div>
+
+            <div class="course loading" data-course="fertilizers">
+                <div class="course-video">
+                    <video muted loop poster="https://via.placeholder.com/350x200?text=Fertilizers+Course">
+                        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4">
+                    </video>
+                    <button class="play-button" data-video="fertilizers">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="regional-tips">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-translate="tip-fertilizers">उत्तर प्रदेश के लिए: संतुलित उर्वरक से 30% उपज बढ़ाएं</span>
+                </div>
+                <div class="course-content">
+                    <h3 data-translate="course-fertilizers-title">उर्वरक उपयोग</h3>
+                    <div class="course-price">₹2,200</div>
+                    <div class="course-meta" data-translate="course-fertilizers-meta">शुरुआती | 4 सप्ताह | प्रमाण पत्र</div>
+                    <a href="#" class="btn enroll-btn" data-course="fertilizers" data-translate="enroll-btn">अभी नामांकन करें</a>
+                </div>
+            </div>
+
+            <div class="course loading" data-course="seeds">
+                <div class="course-video">
+                    <video muted loop poster="https://via.placeholder.com/350x200?text=Seeds+Course">
+                        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+                    </video>
+                    <button class="play-button" data-video="seeds">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="regional-tips">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-translate="tip-seeds">कर्नाटक के लिए: हाइब्रिड बीज से 40% बेहतर अंकुरण</span>
+                </div>
+                <div class="course-content">
+                    <h3 data-translate="course-seeds-title">बीज चयन और प्रबंधन</h3>
+                    <div class="course-price">₹1,800</div>
+                    <div class="course-meta" data-translate="course-seeds-meta">मध्यम | 6 सप्ताह | प्रमाण पत्र</div>
+                    <a href="#" class="btn enroll-btn" data-course="seeds" data-translate="enroll-btn">अभी नामांकन करें</a>
+                </div>
+            </div>
+
+            <div class="course loading" data-course="equipment">
+                <div class="course-video">
+                    <video muted loop poster="https://via.placeholder.com/350x200?text=Equipment+Course">
+                        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4">
+                    </video>
+                    <button class="play-button" data-video="equipment">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="regional-tips">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-translate="tip-equipment">पंजाब के लिए: ट्रैक्टर रखरखाव से 50% मरम्मत लागत बचाएं</span>
+                </div>
+                <div class="course-content">
+                    <h3 data-translate="course-equipment-title">कृषि उपकरण</h3>
+                    <div class="course-price">₹3,000</div>
+                    <div class="course-meta" data-translate="course-equipment-meta">उन्नत | 7 सप्ताह | प्रमाण पत्र</div>
+                    <a href="#" class="btn enroll-btn" data-course="equipment" data-translate="enroll-btn">अभी नामांकन करें</a>
+                </div>
+            </div>
+
+            <div class="course loading" data-course="animal">
+                <div class="course-video">
+                    <video muted loop poster="https://via.placeholder.com/350x200?text=Animal+Management+Course">
+                        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+                    </video>
+                    <button class="play-button" data-video="animal">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="regional-tips">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-translate="tip-animal">राजस्थान के लिए: पशु पोषण से 35% दूध उत्पादन बढ़ाएं</span>
+                </div>
+                <div class="course-content">
+                    <h3 data-translate="course-animal-title">पशु प्रबंधन</h3>
+                    <div class="course-price">₹2,800</div>
+                    <div class="course-meta" data-translate="course-animal-meta">शुरुआती | 5 सप्ताह | प्रमाण पत्र</div>
+                    <a href="#" class="btn enroll-btn" data-course="animal" data-translate="enroll-btn">अभी नामांकन करें</a>
+                </div>
+            </div>
+
+            <div class="course loading" data-course="technology">
+                <div class="course-video">
+                    <video muted loop poster="https://via.placeholder.com/350x200?text=Modern+Technology+Course">
+                        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4">
+                    </video>
+                    <button class="play-button" data-video="technology">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="regional-tips">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-translate="tip-technology">तमिलनाडु के लिए: ड्रोन से 60% समय बचत</span>
+                </div>
+                <div class="course-content">
+                    <h3 data-translate="course-technology-title">आधुनिक कृषि तकनीक</h3>
+                    <div class="course-price">₹4,000</div>
+                    <div class="course-meta" data-translate="course-technology-meta">उन्नत | 8 सप्ताह | प्रमाण पत्र</div>
+                    <a href="#" class="btn enroll-btn" data-course="technology" data-translate="enroll-btn">अभी नामांकन करें</a>
+                </div>
+            </div>
+
+            <div class="course loading" data-course="soil-testing">
+                <div class="course-video">
+                    <video muted loop poster="https://via.placeholder.com/350x200?text=Soil+Testing+Course">
+                        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+                    </video>
+                    <button class="play-button" data-video="soil-testing">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="regional-tips">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-translate="tip-soil-testing">बिहार के लिए: मिट्टी pH परीक्षण से 25% उर्वरक बचत</span>
+                </div>
+                <div class="course-content">
+                    <h3 data-translate="course-soil-testing-title">मिट्टी परीक्षण मॉड्यूल</h3>
+                    <div class="course-price">₹2,000</div>
+                    <div class="course-meta" data-translate="course-soil-testing-meta">शुरुआती | 4 सप्ताह | प्रमाण पत्र</div>
+                    <a href="#" class="btn enroll-btn" data-course="soil-testing" data-translate="enroll-btn">अभी नामांकन करें</a>
+                </div>
+            </div>
+
+            <div class="course loading" data-course="crop-rotation">
+                <div class="course-video">
+                    <video muted loop poster="https://via.placeholder.com/350x200?text=Crop+Rotation+Course">
+                        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4">
+                    </video>
+                    <button class="play-button" data-video="crop-rotation">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="regional-tips">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-translate="tip-crop-rotation">आंध्र प्रदेश के लिए: चावल-दाल रोटेशन से 30% उपज बढ़त</span>
+                </div>
+                <div class="course-content">
+                    <h3 data-translate="course-crop-rotation-title">फसल चक्रण रणनीतियाँ</h3>
+                    <div class="course-price">₹2,500</div>
+                    <div class="course-meta" data-translate="course-crop-rotation-meta">मध्यम | 6 सप्ताह | प्रमाण पत्र</div>
+                    <a href="#" class="btn enroll-btn" data-course="crop-rotation" data-translate="enroll-btn">अभी नामांकन करें</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-container">
+            <span class="close-video" id="closeVideo">&times;</span>
+            <video id="modalVideo" controls autoplay>
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- Course Detail Section -->
+    <section id="course-detail">
+        <div class="course-detail-content">
+            <div class="course-detail-left">
+                <h2 id="course-title"></h2>
+                <p id="course-overview"></p>
+                <div class="course-highlight" id="course-highlight"></div>
+                <h3>आप क्या सीखेंगे</h3>
+                <ul id="course-learn"></ul>
+                <h3>कौन नामांकन करे</h3>
+                <ul id="course-enroll"></ul>
+                <h3>परिणाम</h3>
+                <ul id="course-outcomes"></ul>
+            </div>
+            <div class="course-detail-right">
+                <img src="" alt="Course Image" id="course-image">
+                <div class="details">
+                    <div><strong>कीमत:</strong> <span id="course-price"></span></div>
+                    <div><strong>कोर्स स्तर:</strong> <span id="course-level"></span></div>
+                    <div><strong>अवधि:</strong> <span id="course-duration"></span></div>
+                    <div><strong>प्रमाण पत्र:</strong> <span id="course-certificate"></span></div>
+                    <div><strong>भाषा:</strong> <span id="course-language"></span></div>
+                    <div><strong>पहुंच:</strong> <span id="course-access"></span></div>
+                    <a href="#" class="btn" id="enroll-now" data-translate="enroll-btn">अभी नामांकन करें</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p data-translate="footer">© 2025 Aggrovator. सभी अधिकार सुरक्षित।</p>
+    </footer>
+
+    <script>
+        // Multi-language translations
+        const translations = {
+            hi: {
+                logo: "Aggrovator",
+                'nav-home': "home",
+                'nav-categories': "weather",
+                'nav-courses': "market",
+                'nav-about': "community",
+                'nav-contact': "contact page",
+                'hero-title': "हर फसल, हर कौशल — एक शक्तिशाली मंच",
+                'hero-desc': "भारतीय किसानों के लिए आधुनिक कृषि शिक्षा। अपनी स्थानीय भाषा में सीखें।",
+                'hero-btn': "कोर्स एक्सप्लोर करें",
+                'stats-courses': "500+",
+                'stats-courses-desc': "ऑनलाइन कोर्स",
+                'stats-instructors': "200+",
+                'stats-instructors-desc': "सत्यापित प्रशिक्षक",
+                'stats-certificates': "1000+",
+                'stats-certificates-desc': "प्रमाण पत्र",
+                'stats-farmers': "50K+",
+                'stats-farmers-desc': "संतुष्ट किसान",
+                'categories-title': "शीर्ष कोर्स श्रेणियाँ",
+                'categories-desc': "अपनी क्षेत्र के अनुसार कोर्स चुनें",
+                'category-pesticides': "कीटनाशक",
+                'category-fertilizers': "उर्वरक",
+                'category-seeds': "बीज",
+                'category-equipment': "उपकरण",
+                'category-animal': "पशु प्रबंधन",
+                'category-technology': "आधुनिक तकनीक",
+                'category-soil-testing': "मिट्टी परीक्षण",
+                'category-crop-rotation': "फसल चक्रण",
+                'courses-title': "प्रमुख कोर्स",
+                'enroll-btn': "अभी नामांकन करें",
+                'course-pesticides-title': "कीटनाशक प्रबंधन",
+                'course-pesticides-meta': "मध्यम | 5 सप्ताह | प्रमाण पत्र",
+                'course-fertilizers-title': "उर्वरक उपयोग",
+                'course-fertilizers-meta': "शुरुआती | 4 सप्ताह | प्रमाण पत्र",
+                'course-seeds-title': "बीज चयन और प्रबंधन",
+                'course-seeds-meta': "मध्यम | 6 सप्ताह | प्रमाण पत्र",
+                'course-equipment-title': "कृषि उपकरण",
+                'course-equipment-meta': "उन्नत | 7 सप्ताह | प्रमाण पत्र",
+                'course-animal-title': "पशु प्रबंधन",
+                'course-animal-meta': "शुरुआती | 5 सप्ताह | प्रमाण पत्र",
+                'course-technology-title': "आधुनिक कृषि तकनीक",
+                'course-technology-meta': "उन्नत | 8 सप्ताह | प्रमाण पत्र",
+                'course-soil-testing-title': "मिट्टी परीक्षण मॉड्यूल",
+                'course-soil-testing-meta': "शुरुआती | 4 सप्ताह | प्रमाण पत्र",
+                'course-crop-rotation-title': "फसल चक्रण रणनीतियाँ",
+                'course-crop-rotation-meta': "मध्यम | 6 सप्ताह | प्रमाण पत्र",
+                'tip-pesticides': "महाराष्ट्र के लिए: जैविक कीटनाशक से 25% फसल हानि कम करें",
+                'tip-fertilizers': "उत्तर प्रदेश के लिए: संतुलित उर्वरक से 30% उपज बढ़ाएं",
+                'tip-seeds': "कर्नाटक के लिए: हाइब्रिड बीज से 40% बेहतर अंकुरण",
+                'tip-equipment': "पंजाब के लिए: ट्रैक्टर रखरखाव से 50% मरम्मत लागत बचाएं",
+                'tip-animal': "राजस्थान के लिए: पशु पोषण से 35% दूध उत्पादन बढ़ाएं",
+                'tip-technology': "तमिलनाडु के लिए: ड्रोन से 60% समय बचत",
+                'tip-soil-testing': "बिहार के लिए: मिट्टी pH परीक्षण से 25% उर्वरक बचत",
+                'tip-crop-rotation': "आंध्र प्रदेश के लिए: चावल-दाल रोटेशन से 30% उपज बढ़त",
+                'footer': "© 2025 Aggrovator. सभी अधिकार सुरक्षित।"
+            },
+            en: {
+                logo: "Aggrovator",
+                'nav-home': "home",
+                'nav-categories': "weather",
+                'nav-courses': "market",
+                'nav-about': "community",
+                'nav-contact': "contact page",
+                // Add other English translations
+            }
+        };
+
+        const coursesData = {
+            pesticides: {
+                title: "कीटनाशक प्रबंधन",
+                overview: "कीटनाशकों के सुरक्षित और प्रभावी उपयोग को सीखें।",
+                learn: ["कीटनाशक प्रकार समझें", "सुरक्षित आवेदन तकनीकें", "पर्यावरण प्रभाव कम करें"],
+                enroll: ["किसान", "कीट विशेषज्ञ", "कृषि छात्र"],
+                outcomes: ["फसल सुरक्षा बढ़ाएं", "रासायनिक उपयोग कम करें", "उपज सुधारें"],
+                price: "₹2,500",
+                level: "मध्यम",
+                duration: "5 सप्ताह",
+                certificate: "हाँ",
+                language: "हिंदी",
+                access: "लाइफटाइम",
+                image: "https://via.placeholder.com/300x200?text=कीटनाशक"
+            },
+            fertilizers: {
+                title: "उर्वरक उपयोग",
+                overview: "उर्वरकों के सही उपयोग से मिट्टी स्वास्थ्य सुधारें।",
+                learn: ["उर्वरक प्रकार", "मिट्टी परीक्षण", "अनुप्रयोग विधियां"],
+                enroll: ["नए किसान", "मिट्टी विशेषज्ञ", "कृषि उत्साही"],
+                outcomes: ["उपज बढ़ाएं", "मिट्टी उर्वरता बनाए रखें", "लागत बचाएं"],
+                price: "₹2,200",
+                level: "शुरुआती",
+                duration: "4 सप्ताह",
+                certificate: "हाँ",
+                language: "हिंदी",
+                access: "लाइफटाइम",
+                image: "https://via.placeholder.com/300x200?text=उर्वरक"
+            },
+            seeds: {
+                title: "बीज चयन और प्रबंधन",
+                overview: "सर्वोत्तम बीज चयन से फसल सफलता सुनिश्चित करें।",
+                learn: ["बीज गुणवत्ता", "भंडारण तकनीकें", "अंकुरण विधियां"],
+                enroll: ["बीज उत्पादक", "किसान", "कृषि छात्र"],
+                outcomes: ["बेहतर अंकुरण", "रोग प्रतिरोध", "उच्च उपज"],
+                price: "₹1,800",
+                level: "मध्यम",
+                duration: "6 सप्ताह",
+                certificate: "हाँ",
+                language: "हिंदी",
+                access: "लाइफटाइम",
+                image: "https://via.placeholder.com/300x200?text=बीज"
+            },
+            equipment: {
+                title: "कृषि उपकरण",
+                overview: "उपकरणों के उपयोग और रखरखाव को सीखें।",
+                learn: ["उपकरण प्रकार", "रखरखाव", "सुरक्षा"],
+                enroll: ["किसान", "मैकेनिक", "कृषि अभियंता"],
+                outcomes: ["दक्षता बढ़ाएं", "डाउनटाइम कम करें", "लागत बचाएं"],
+                price: "₹3,000",
+                level: "उन्नत",
+                duration: "7 सप्ताह",
+                certificate: "हाँ",
+                language: "हिंदी",
+                access: "लाइफटाइम",
+                image: "https://via.placeholder.com/300x200?text=उपकरण"
+            },
+            animal: {
+                title: "पशु प्रबंधन",
+                overview: "पशुओं के स्वास्थ्य और उत्पादकता को सुधारें।",
+                learn: ["पोषण", "रोग प्रबंधन", "प्रजनन"],
+                enroll: ["पशु किसान", "पशु चिकित्सक", "डेयरी मालिक"],
+                outcomes: ["उत्पादकता बढ़ाएं", "स्वास्थ्य सुधारें", "लाभ बढ़ाएं"],
+                price: "₹2,800",
+                level: "शुरुआती",
+                duration: "5 सप्ताह",
+                certificate: "हाँ",
+                language: "हिंदी",
+                access: "लाइफटाइम",
+                image: "https://via.placeholder.com/300x200?text=पशु+प्रबंधन"
+            },
+            technology: {
+                title: "आधुनिक कृषि तकनीक",
+                overview: "ड्रोन, AI और IoT से कृषि क्रांति लाएं।",
+                learn: ["ड्रोन उपयोग", "AI अनुप्रयोग", "IoT सेंसर"],
+                enroll: ["तकनीकी किसान", "कृषि स्टार्टअप", "अभियंता"],
+                outcomes: ["दक्षता बढ़ाएं", "डेटा-आधारित निर्णय", "उपज ऑप्टिमाइज करें"],
+                price: "₹4,000",
+                level: "उन्नत",
+                duration: "8 सप्ताह",
+                certificate: "हाँ",
+                language: "हिंदी",
+                access: "लाइफटाइम",
+                image: "https://via.placeholder.com/300x200?text=आधुनिक+तकनीक"
+            },
+            'soil-testing': {
+                title: "मिट्टी परीक्षण मॉड्यूल",
+                overview: "मिट्टी के स्वास्थ्य का परीक्षण और विश्लेषण सीखें।",
+                learn: ["मिट्टी सैंपलिंग", "पोषक तत्व विश्लेषण", "सुधार सुझाव"],
+                enroll: ["किसान", "मिट्टी वैज्ञानिक", "कृषि सलाहकार"],
+                outcomes: ["मिट्टी स्वास्थ्य सुधारें", "उर्वरक उपयोग ऑप्टिमाइज करें", "उपज बढ़ाएं"],
+                price: "₹2,000",
+                level: "शुरुआती",
+                duration: "4 सप्ताह",
+                certificate: "हाँ",
+                language: "हिंदी",
+                access: "लाइफटाइम",
+                image: "https://via.placeholder.com/300x200?text=मिट्टी+परीक्षण"
+            },
+            'crop-rotation': {
+                title: "फसल चक्रण रणनीतियाँ",
+                overview: "फसल चक्रण से मिट्टी उर्वरता बनाए रखें।",
+                learn: ["चक्रण पैटर्न", "लाभ और योजना", "केस स्टडीज"],
+                enroll: ["अनुभवी किसान", "कृषि विशेषज्ञ", "टिकाऊ खेती उत्साही"],
+                outcomes: ["मिट्टी थकान कम करें", "कीट नियंत्रण", "उपज स्थिरता"],
+                price: "₹2,500",
+                level: "मध्यम",
+                duration: "6 सप्ताह",
+                certificate: "हाँ",
+                language: "हिंदी",
+                access: "लाइफटाइम",
+                image: "https://via.placeholder.com/300x200?text=फसल+चक्रण"
+            },
+            
+        };
+
+        class LanguageManager {
+            constructor() {
+                this.currentLang = 'hi';
+                this.init();
+            }
+
+            init() {
+                const select = document.getElementById('languageSelect');
+                select.value = this.currentLang;
+                select.addEventListener('change', (e) => {
+                    this.currentLang = e.target.value;
+                    document.documentElement.lang = this.currentLang;
+                    this.updateTranslations();
+                });
+                this.updateTranslations();
+            }
+
+            updateTranslations() {
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.getAttribute('data-translate');
+                    if (translations[this.currentLang] && translations[this.currentLang][key]) {
+                        el.textContent = translations[this.currentLang][key];
+                    }
+                });
+            }
+        }
+
+        class VideoManager {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                const playButtons = document.querySelectorAll('.play-button');
+                const modal = document.getElementById('videoModal');
+                const closeBtn = document.getElementById('closeVideo');
+                const video = document.getElementById('modalVideo');
+
+                playButtons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const videoId = btn.dataset.video;
+                        video.src = this.getVideoSource(videoId);
+                        modal.classList.add('active');
+                        video.play();
+                    });
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                    video.pause();
+                    video.currentTime = 0;
+                });
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                });
+
+                // Engaging previews: play on hover
+                const courses = document.querySelectorAll('.course');
+                courses.forEach(course => {
+                    const previewVideo = course.querySelector('video');
+                    course.addEventListener('mouseenter', () => {
+                        if (previewVideo) previewVideo.play();
+                    });
+                    course.addEventListener('mouseleave', () => {
+                        if (previewVideo) {
+                            previewVideo.pause();
+                            previewVideo.currentTime = 0;
+                        }
+                    });
+                });
+            }
+
+            getVideoSource(courseId) {
+                const videoMap = {
+                    pesticides: 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
+                    fertilizers: 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4',
+                    seeds: 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
+                    equipment: 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4',
+                    animal: 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
+                    technology: 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4',
+                    'soil-testing': 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
+                    'crop-rotation': 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4'
+                };
+                return videoMap[courseId] || '';
+            }
+        }
+
+        class CourseManager {
+            constructor() {
+                this.courseDetail = document.getElementById('course-detail');
+                this.init();
+            }
+
+            init() {
+                const enrollButtons = document.querySelectorAll('.enroll-btn');
+                enrollButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const courseId = button.getAttribute('data-course');
+                        this.showCourseDetails(courseId);
+                    });
+                });
+
+                document.getElementById('enroll-now').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('नामांकन सफल! आपका स्वागत है।');
+                });
+            }
+
+            showCourseDetails(courseId) {
+                const course = coursesData[courseId];
+                if (!course) return;
+
+                document.getElementById('course-title').textContent = course.title;
+                document.getElementById('course-overview').textContent = course.overview;
+                document.getElementById('course-highlight').textContent = "इस कोर्स से अपनी खेती को अगले स्तर पर ले जाएं!";
+                document.getElementById('course-learn').innerHTML = course.learn.map(item => `<li>${item}</li>`).join('');
+                document.getElementById('course-enroll').innerHTML = course.enroll.map(item => `<li>${item}</li>`).join('');
+                document.getElementById('course-outcomes').innerHTML = course.outcomes.map(item => `<li>${item}</li>`).join('');
+                document.getElementById('course-price').textContent = course.price;
+                document.getElementById('course-level').textContent = course.level;
+                document.getElementById('course-duration').textContent = course.duration;
+                document.getElementById('course-certificate').textContent = course.certificate;
+                document.getElementById('course-language').textContent = course.language;
+                document.getElementById('course-access').textContent = course.access;
+                document.getElementById('course-image').src = course.image;
+                document.getElementById('course-image').alt = course.title;
+
+                this.courseDetail.classList.add('active');
+                this.courseDetail.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new LanguageManager();
+            new VideoManager();
+            new CourseManager();
+
+            // Animate elements
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0.2s';
+                        entry.target.classList.add('loading');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.loading').forEach(el => observer.observe(el));
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

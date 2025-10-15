@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aggrovator - Pesticide Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #e8f5e9;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #c8e6c9;
+    }
+
+    .language-select {
+      padding: 6px 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Main section */
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #1b5e20;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #388e3c;
+      margin-top: 30px;
+    }
+
+    p {
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .image-container img {
+      width: 250px;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #1b5e20;
+      transform: translateY(-2px);
+    }
+    .enroll{
+        display: inline-block;
+        margin-top: 15px;
+        margin-left: 50rem;
+        background-color: #ff4d2d;
+        color: white;
+        border: none;
+        padding: 15px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">🚜 Aggrovator</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Weather</a>
+      <a href="#">Market</a>
+      <a href="#">Community</a>
+      <a href="#">Contact</a>
+    </nav>
+    <select class="language-select" id="languageSelect">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="mr">मराठी</option>
+      <option value="ta">தமிழ்</option>
+      <option value="te">తెలుగు</option>
+      <option value="bn">বাংলা</option>
+      <option value="pa">ਪੰਜਾਬੀ</option>
+      <option value="gu">ગુજરાતી</option>
+      <option value="kn">ಕನ್ನಡ</option>
+      <option value="ml">മലയാളം</option>
+    </select>
+  </header>
+
+  <main id="content">
+    <h1 id="title">Crop Management</h1>
+    <p id="intro">
+      Pesticides are chemical or biological substances used to control pests that damage crops. 
+      Effective and safe Crop Management helps improve yield while protecting the environment and human health.
+    </p>
+
+    <div class="image-container">
+      <img src="https://th.bing.com/th/id/OIP.fF5O8psGtj2Gj2FNpPEkHAHaE8?w=296&h=198&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="Spraying pesticide">
+      <img src="https://th.bing.com/th/id/OIP.IWXzl6EM0Sk10A5pq_P-GQHaE7?w=249&h=180&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="Farmer using pesticide sprayer">
+    </div>
+
+    <h2 id="usage-heading">How to Use Pesticides Safely</h2>
+    <ul id="usage">
+      <li>Read and follow label instructions carefully.</li>
+      <li>Wear protective gear like gloves, masks, and boots.</li>
+      <li>Do not spray during windy conditions to avoid drift.</li>
+      <li>Store pesticides away from food and animal feed.</li>
+      <li>Dispose of containers responsibly after use.</li>
+    </ul>
+
+    <h2 id="pros-heading">Pros</h2>
+    <ul id="pros">
+      <li>Increases crop yield and productivity.</li>
+      <li>Prevents spread of harmful pests and diseases.</li>
+      <li>Reduces labor cost compared to manual pest removal.</li>
+    </ul>
+
+    <h2 id="cons-heading">Cons</h2>
+    <ul id="cons">
+      <li>Overuse can cause soil and water pollution.</li>
+      <li>Can harm beneficial insects and animals.</li>
+      <li>Improper handling may cause health hazards.</li>
+    </ul>
+
+    <button class="back-btn" onclick="goBack()">⬅ Back</button>
+    <button class="enroll">Enroll</button>
+  </main>
+
+  <footer>
+    © 2025 Aggrovator | Empowering Indian Farmers 🌾
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        title: "Pesticide Management",
+        intro: "Pesticides are chemical or biological substances used to control pests that damage crops. Effective and safe pesticide management helps improve yield while protecting the environment and human health.",
+        usageHeading: "How to Use Pesticides Safely",
+        prosHeading: "Pros",
+        consHeading: "Cons",
+        usage: [
+          "Read and follow label instructions carefully.",
+          "Wear protective gear like gloves, masks, and boots.",
+          "Do not spray during windy conditions to avoid drift.",
+          "Store pesticides away from food and animal feed.",
+          "Dispose of containers responsibly after use."
+        ],
+        pros: [
+          "Increases crop yield and productivity.",
+          "Prevents spread of harmful pests and diseases.",
+          "Reduces labor cost compared to manual pest removal."
+        ],
+        cons: [
+          "Overuse can cause soil and water pollution.",
+          "Can harm beneficial insects and animals.",
+          "Improper handling may cause health hazards."
+        ]
+      },
+      hi: {
+        title: "कीटनाशक प्रबंधन",
+        intro: "कीटनाशक वे रासायनिक या जैविक पदार्थ होते हैं जो फसलों को नुकसान पहुँचाने वाले कीटों को नियंत्रित करते हैं। सुरक्षित कीटनाशक प्रबंधन पर्यावरण और मानव स्वास्थ्य की रक्षा करते हुए फसल उत्पादन में सुधार करता है।",
+        usageHeading: "कीटनाशक सुरक्षित रूप से कैसे उपयोग करें",
+        prosHeading: "फायदे",
+        consHeading: "नुकसान",
+        usage: [
+          "लेबल पर दिए निर्देशों को ध्यान से पढ़ें और पालन करें।",
+          "दस्ताने, मास्क और जूते जैसे सुरक्षा उपकरण पहनें।",
+          "हवा चलने पर छिड़काव न करें।",
+          "खाद्य और पशु चारे से दूर कीटनाशक रखें।",
+          "उपयोग के बाद कंटेनरों का सही निपटान करें।"
+        ],
+        pros: [
+          "फसल उत्पादन और उत्पादकता में वृद्धि करता है।",
+          "हानिकारक कीटों और बीमारियों के प्रसार को रोकता है।",
+          "श्रम लागत को कम करता है।"
+        ],
+        cons: [
+          "अत्यधिक उपयोग से मिट्टी और पानी प्रदूषित हो सकते हैं।",
+          "यह लाभकारी कीटों और जानवरों को नुकसान पहुँचा सकता है।",
+          "गलत उपयोग से स्वास्थ्य को खतरा हो सकता है।"
+        ]
+      },
+      mr: {
+        title: "कीटकनाशक व्यवस्थापन",
+        intro: "कीटकनाशके ही रासायनिक किंवा जैविक पदार्थ असतात जे पिकांना हानी पोहोचवणाऱ्या कीटकांवर नियंत्रण ठेवतात. सुरक्षित कीटकनाशक वापर उत्पादन वाढवतो आणि पर्यावरणाचे संरक्षण करतो.",
+        usageHeading: "कीटकनाशके सुरक्षितपणे कशी वापरावीत",
+        prosHeading: "फायदे",
+        consHeading: "तोटे",
+        usage: [
+          "लेबलवरील सूचना काळजीपूर्वक वाचा आणि त्यांचे पालन करा.",
+          "हातमोजे, मास्क आणि बूट सारखी सुरक्षा साधने घाला.",
+          "वादळी हवामानात फवारणी टाळा.",
+          "कीटकनाशके अन्न व प्राण्यांच्या खाद्यापासून दूर ठेवा.",
+          "वापरल्यानंतर कंटेनर योग्यरित्या टाकून द्या."
+        ],
+        pros: [
+          "पिकांचे उत्पादन आणि उत्पादकता वाढते.",
+          "हानिकारक कीटक आणि रोगांचा प्रसार रोखतो.",
+          "हाताने कीटक नियंत्रणाच्या तुलनेत मजुरी खर्च कमी करतो."
+        ],
+        cons: [
+          "अति वापरामुळे माती आणि पाण्याचे प्रदूषण होऊ शकते.",
+          "उपयुक्त कीटक आणि प्राण्यांना हानी पोहोचवू शकते.",
+          "अयोग्य हाताळणीमुळे आरोग्यास धोका निर्माण होऊ शकतो."
+        ]
+      }
+    };
+
+    document.getElementById("languageSelect").addEventListener("change", function() {
+      const lang = this.value;
+      const t = translations[lang] || translations.en;
+
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("intro").textContent = t.intro;
+      document.getElementById("usage-heading").textContent = t.usageHeading;
+      document.getElementById("pros-heading").textContent = t.prosHeading;
+      document.getElementById("cons-heading").textContent = t.consHeading;
+
+      const usageList = document.getElementById("usage");
+      const prosList = document.getElementById("pros");
+      const consList = document.getElementById("cons");
+
+      usageList.innerHTML = t.usage.map(item => `<li>${item}</li>`).join("");
+      prosList.innerHTML = t.pros.map(item => `<li>${item}</li>`).join("");
+      consList.innerHTML = t.cons.map(item => `<li>${item}</li>`).join("");
+    });
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

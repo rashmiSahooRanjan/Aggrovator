@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/weather.css"/>
+    <style>
+        .nav-menu{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
+</head>
+<body>
+                <div class="nav-menu">
+            
+                <span>Aggrovator</span>
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="#weather.html" class="nav-link">Weather</a>
+                <a href="market.html" class="nav-link active">Market Prices</a>
+                <a href="disease.html" class="nav-link">Disease Detection</a>
+                <a href="education.html" class="nav-link">Education</a>
+                <a href="community.html" class="nav-link">Community</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+    <div class="container">
+        <header>
+ 
+            <div class="search-bar">
+                <input type="text" id="cityInput" placeholder="Search for a city..." />
+                <button onclick="searchWeather()">Search</button>
+                <button onclick="getCurrentLocation()">📍 My Location</button>
+            </div>
+            <div class="location-info" id="locationInfo">
+                <span>📍 Loading location...</span>
+            </div>
+        </header>
+
+        <div id="errorMessage"></div>
+        <div id="loadingMessage" class="loading">Loading weather data...</div>
+
+        <div id="weatherContent" style="display: none;">
+            <div class="main-weather">
+                <div class="current-weather">
+                    <div class="temp-display">
+                        <img id="mainWeatherIcon" src="" alt="Weather icon">
+                        <div>
+                            <div class="temp-value" id="mainTemp">--°</div>
+                            <div class="weather-desc" id="mainDesc">--</div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Feels Like</div>
+                            <div class="detail-value" id="feelsLike">--°</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Humidity</div>
+                            <div class="detail-value" id="humidity">--%</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Wind Speed</div>
+                            <div class="detail-value" id="windSpeed">-- km/h</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Pressure</div>
+                            <div class="detail-value" id="pressure">-- hPa</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Visibility</div>
+                            <div class="detail-value" id="visibility">-- km</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">UV Index</div>
+                            <div class="detail-value" id="uvIndex">--</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Hourly Forecast</div>
+                <div class="hourly-forecast" id="hourlyForecast"></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">10-Day Forecast</div>
+                <div class="daily-forecast" id="dailyForecast"></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Air Quality</div>
+                <div class="air-quality" id="airQuality"></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Sun & Moon</div>
+                <div class="sun-times" id="sunTimes"></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Weather Map</div>
+                <div class="weather-map">
+                    <div class="map-controls">
+                        <button onclick="changeMapLayer('clouds')" id="btnClouds">Clouds</button>
+                        <button onclick="changeMapLayer('precipitation')" id="btnPrecipitation">Precipitation</button>
+                        <button onclick="changeMapLayer('temp')" id="btnTemp" class="active">Temperature</button>
+                        <button onclick="changeMapLayer('wind')" id="btnWind">Wind</button>
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="../js/weather.js">
+        
+    </script>
+</body>
+</html>
